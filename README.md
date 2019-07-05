@@ -98,6 +98,12 @@ Now you should be set to go. Try to run your client using `ionic cap run android
 
 > Tip: every time you change a native code you may need to clean up the cache (Build > Clean Project | Build > Rebuild Project) and then run the app again.
 
+## Updating
+
+For existing projects you can upgrade all capacitor related packages (including this plugin) with this single command
+
+`npx npm-upgrade '*capacitor*' && npm install`
+
 ## Sample app
 
 https://github.com/stewwan/capacitor-analytics-demo
