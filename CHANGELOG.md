@@ -2,6 +2,21 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.0.4"></a>
+## [0.0.4](https://github.com/stewwan/capacitor-analytics/compare/v0.0.3...v0.0.4) (2019-07-05)
+
+
+### Bug Fixes
+
+* **plugin:** api ([2ecd2fe](https://github.com/stewwan/capacitor-analytics/commit/2ecd2fe))
+
+
+### Features
+
+* **README:** add upgrade info ([e029ea9](https://github.com/stewwan/capacitor-analytics/commit/e029ea9))
+
+
+
 <a name="0.0.3"></a>
 ## [0.0.3](https://github.com/stewwan/capacitor-analytics/compare/v0.0.2...v0.0.3) (2019-07-05)
 
