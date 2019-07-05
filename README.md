@@ -59,7 +59,8 @@ Download the `google-services.json` file and copy it to `android/app/` directory
 - `npx cap open ios`
 - sign your app at xcode (general tab)
 - add `GoogleService-Info.plist` to the app folder in xcode
-- enable debug view
+
+### Enable debug view
 
 1. In Xcode, select Product > Scheme > Edit scheme
 2. Select Run from the left menu
