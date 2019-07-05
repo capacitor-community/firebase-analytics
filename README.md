@@ -7,7 +7,7 @@ Capacitor plugin to enable features from Firebase Analytics
 ## API
 
 - `instance(): Promise<{ id: string }>`
-- `reset(): Promise<void`
+- `reset(): Promise<void>`
 - `setScreen({ name: string; class?: string }): Promise<void>`
 - `setUserID({ value: string }): Promise<void>`
 - `setUserProp({ key: string; value: string }): Promise<void>`
