@@ -1,7 +1,7 @@
 
   Pod::Spec.new do |s|
     s.name = 'CapacitorAnalytics'
-    s.version = '0.0.1'
+    s.version = '0.0.2'
     s.summary = 'Enable Firebase Analytics for Capacitor Apps'
     s.license = 'MIT'
     s.homepage = 'https://github.com/stewwan/capacitor-analytics'

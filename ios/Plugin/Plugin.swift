@@ -17,6 +17,7 @@ public class AnalyticsPlugin: CAPPlugin {
     if (FirebaseApp.app() == nil) {
       FirebaseApp.configure();
     }
+    Analytics.setAnalyticsCollectionEnabled(true)
   }
   
   @objc func instance(_ call: CAPPluginCall) {
@@ -75,7 +76,6 @@ public class AnalyticsPlugin: CAPPlugin {
       return
     }
   }
-  
   
   @objc func logEvent(_ call: CAPPluginCall) {
     let name = call.getString("name");
