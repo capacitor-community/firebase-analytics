@@ -29,6 +29,8 @@ analytics.setUserID({ value: '1337' });
 
 //
 // user attributes
+// google don't allow use of sensitive data
+// like names, emails, card numbers, etc.
 analytics.setUserProp({
   key: 'city',
   value: 'San Francisco'
@@ -41,8 +43,6 @@ analytics.logEvent({
   params: { items: '[1, 2, 3]', total: 254.5 }
 });
 ```
-
-> Google don't allow use sensitive data in user attributes like names, emails, card numbers, etc.
 
 ## Add Google config files
 
