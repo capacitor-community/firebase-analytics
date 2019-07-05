@@ -21,8 +21,10 @@ export interface LogEventParams {
 }
 
 export interface AnalyticsProtocol {
-  instance(): Promise<{ id: string }>;
+  enable(): Promise<void>;
+  disable(): Promise<void>;
   reset(): Promise<void>;
+  instance(): Promise<{ id: string }>;
   setScreen(options: ScreenParams): Promise<void>;
   setUserID(options: UserIDParams): Promise<void>;
   setUserProp(options: UserPropParams): Promise<void>;

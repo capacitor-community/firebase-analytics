@@ -6,6 +6,8 @@ Capacitor plugin to enable features from Firebase Analytics
 
 ## API
 
+- `enable(): Promise<void>`
+- `disable(): Promise<void>`
 - `instance(): Promise<{ id: string }>`
 - `reset(): Promise<void>`
 - `setScreen({ name: string; class?: string }): Promise<void>`
@@ -22,16 +24,25 @@ import { Analytics } from 'capacitor-analytics';
 const analytics = new Analytics();
 
 //
-// set user id
+// user id
 analytics.setUserID({ value: '1337' });
 
 //
-// log some event
+// user attributes
+analytics.setUserProp({
+  key: 'city',
+  value: 'San Francisco'
+});
+
+//
+// some event
 analytics.logEvent({
   name: 'purchase',
   params: { items: '[1, 2, 3]', total: 254.5 }
 });
 ```
+
+> Google don't allow use sensitive data in user attributes like names, emails, card numbers, etc.
 
 ## Add Google config files
 

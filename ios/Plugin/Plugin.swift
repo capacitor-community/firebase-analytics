@@ -17,7 +17,20 @@ public class AnalyticsPlugin: CAPPlugin {
     if (FirebaseApp.app() == nil) {
       FirebaseApp.configure();
     }
-    Analytics.setAnalyticsCollectionEnabled(true)
+  }
+
+  @objc func enable(_ call: CAPPluginCall) {
+    DispatchQueue.main.async {
+      Analytics.setAnalyticsCollectionEnabled(true)
+      call.success()
+    }
+  }
+  
+  @objc func disable(_ call: CAPPluginCall) {
+    DispatchQueue.main.async {
+      Analytics.setAnalyticsCollectionEnabled(false)
+      call.success()
+    }
   }
   
   @objc func instance(_ call: CAPPluginCall) {
