@@ -4,7 +4,7 @@ buildscript {
         google()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:3.3.2'
+        classpath 'com.android.tools.build:gradle:3.6.1'
     }
 }
 
@@ -46,5 +46,3 @@ dependencies {
     implementation 'com.google.firebase:firebase-core:16.0.6'
     implementation 'com.android.support:appcompat-v7:27.0.0'
 }
-
-com.google.gms.googleservices.GoogleServicesPlugin.config.disableVersionCheck = true
