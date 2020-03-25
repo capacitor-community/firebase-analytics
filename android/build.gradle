@@ -47,4 +47,5 @@ dependencies {
     implementation 'com.android.support:appcompat-v7:27.0.0'
 }
 
-com.google.gms.googleservices.GoogleServicesPlugin.config.disableVersionCheck = true
+// googleServices { disableVersionCheck = true }
+// com.google.gms.googleservices.GoogleServicesPlugin.config.disableVersionCheck = true

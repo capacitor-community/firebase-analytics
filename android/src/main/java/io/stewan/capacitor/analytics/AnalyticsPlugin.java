@@ -136,7 +136,7 @@ public class AnalyticsPlugin extends Plugin {
                         } else if (value instanceof Long) {
                             bundle.putLong(key, (Long) value);
                         } else {
-                            call.reject("Value for key " + key + " not one of (String, Integer, Double, Long)");
+                            call.reject("Value for key " + key + " is not one of String, Integer, Double or Long");
                         }
                     }
                 } else {
