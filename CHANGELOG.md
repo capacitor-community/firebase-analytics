@@ -1,6 +1,18 @@
-# Change Log
+# Changelog
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
+
+## [2.1.0](https://github.com/stewwan/capacitor-analytics/compare/v0.0.4...v2.1.0) (2020-05-25)
+
+
+### Features
+
+* **android:** update to capacitor v2 ([9df8c99](https://github.com/stewwan/capacitor-analytics/commit/9df8c99e8e42de69b4fa45de2e3b7af250d8f7dc))
+
+
+### Bug Fixes
+
+* we should not commit this file ([bca1613](https://github.com/stewwan/capacitor-analytics/commit/bca16135090bef73468e0c6ac864bb3936635f6a))
 
 <a name="0.0.4"></a>
 ## [0.0.4](https://github.com/stewwan/capacitor-analytics/compare/v0.0.3...v0.0.4) (2019-07-05)
