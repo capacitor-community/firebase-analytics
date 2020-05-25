@@ -12,25 +12,26 @@ import com.getcapacitor.PluginCall;
 import com.getcapacitor.PluginMethod;
 import com.getcapacitor.cordova.MockCordovaWebViewImpl;
 import com.google.firebase.analytics.FirebaseAnalytics;
+
 import org.json.JSONException;
 import org.json.JSONObject;
+
 import java.util.Iterator;
 
 
 /**
- *
  * Created by Stewan Silva on 07/05/2019.
- *
+ * <p>
  * Please read the Capacitor Android Plugin Development Guide
  * here: https://capacitor.ionicframework.com/docs/plugins/android
  */
 
 @NativePlugin(
-    permissions = {
-        Manifest.permission.ACCESS_NETWORK_STATE,
-        Manifest.permission.INTERNET,
-        Manifest.permission.WAKE_LOCK
-    }
+        permissions = {
+                Manifest.permission.ACCESS_NETWORK_STATE,
+                Manifest.permission.INTERNET,
+                Manifest.permission.WAKE_LOCK
+        }
 )
 public class AnalyticsPlugin extends Plugin {
 
@@ -38,6 +39,26 @@ public class AnalyticsPlugin extends Plugin {
 
     public void load() {
         analytics = FirebaseAnalytics.getInstance(getContext());
+    }
+
+    @PluginMethod()
+    public void enable(PluginCall call) {
+        try {
+            analytics.setAnalyticsCollectionEnabled(true);
+            call.success();
+        } catch (Exception e) {
+            call.reject(e.getLocalizedMessage(), e);
+        }
+    }
+
+    @PluginMethod()
+    public void disable(PluginCall call) {
+        try {
+            analytics.setAnalyticsCollectionEnabled(false);
+            call.success();
+        } catch (Exception e) {
+            call.reject(e.getLocalizedMessage(), e);
+        }
     }
 
     @PluginMethod()
