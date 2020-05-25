@@ -21,7 +21,7 @@ import java.util.Iterator;
 
 /**
  * Created by Stewan Silva on 07/05/2019.
- * <p>
+ * 
  * Please read the Capacitor Android Plugin Development Guide
  * here: https://capacitor.ionicframework.com/docs/plugins/android
  */
