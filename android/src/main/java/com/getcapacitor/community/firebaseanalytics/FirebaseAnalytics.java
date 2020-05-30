@@ -1,5 +1,6 @@
 package com.getcapacitor.community.firebaseanalytics;
 
+import android.Manifest;
 import android.os.Bundle;
 
 import com.getcapacitor.JSObject;
@@ -12,7 +13,13 @@ import org.json.JSONObject;
 
 import java.util.Iterator;
 
-@NativePlugin()
+@NativePlugin(
+    permissions = {
+        Manifest.permission.ACCESS_NETWORK_STATE,
+        Manifest.permission.INTERNET,
+        Manifest.permission.WAKE_LOCK
+    }
+)
 public class FirebaseAnalytics extends Plugin {
 
     private com.google.firebase.analytics.FirebaseAnalytics mFirebaseAnalytics;
