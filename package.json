@@ -1,17 +1,18 @@
 {
   "name": "firebase-analytics",
   "version": "0.0.1",
-  "description": "Firebase Analytics for Capacitor Community",
+  "description": "A native plugin for firebase analytics.",
   "main": "dist/esm/index.js",
   "types": "dist/esm/index.d.ts",
   "scripts": {
     "build": "npm run clean && tsc",
     "clean": "rimraf ./dist",
     "watch": "tsc --watch",
-    "prepublishOnly": "npm run build"
+    "prepublishOnly": "npm run build",
+    "publish": "np"
   },
   "author": "Priyank Patel <priyank.patel@stackspace.ca>",
-  "license": "",
+  "license": "MIT",
   "dependencies": {
     "@capacitor/core": "latest"
   },
@@ -42,9 +43,9 @@
   },
   "repository": {
     "type": "git",
-    "url": "git@github.com:capacitor-community/firebase-analytics.git"
+    "url": "https://github.com/capacitor-community/firebase-analytics"
   },
   "bugs": {
-    "url": "git@github.com:capacitor-community/firebase-analytics.git/issues"
+    "url": "https://github.com/capacitor-community/firebase-analytics/issues"
   }
 }

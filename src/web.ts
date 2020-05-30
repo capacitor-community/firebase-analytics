@@ -1,6 +1,8 @@
 import { WebPlugin } from '@capacitor/core';
 import { FirebaseAnalyticsPlugin } from './definitions';
 
+declare var firebase: any;
+
 export class FirebaseAnalyticsWeb extends WebPlugin implements FirebaseAnalyticsPlugin {
   constructor() {
     super({
@@ -9,35 +11,60 @@ export class FirebaseAnalyticsWeb extends WebPlugin implements FirebaseAnalytics
     });
   }
 
-
   setUserId(options: { userId: string; }): Promise<void> {
-    console.warn(options);
-    throw new Error("Method not implemented.");
+    return new Promise((resolve, reject) => {
+      if (firebase && firebase.analytics) {
+        const analytics = firebase.analytics();
+        const { userId } = options;
+
+        analytics.setUserId(userId);
+        resolve();
+      } else {
+        reject('firebase is not initialized');
+      }
+    });
   }
   setUserProperty(options: { name: string; value: string; }): Promise<void> {
-    console.warn(options);
-    throw new Error("Method not implemented.");
+    return new Promise((resolve, reject) => {
+      if (firebase && firebase.analytics) {
+        const analytics = firebase.analytics();
+        const { name, value } = options;
+
+        const property: any = {};
+        property[name] = value;
+        analytics.setUserProperties(property);
+        resolve();
+      } else {
+        reject('firebase is not initialized');
+      }
+    });
   }
 
   getAppInstanceId(): Promise<{ instanceId: string; }> {
-    throw new Error("Method not implemented.");
+    return new Promise((resolve, _reject) => resolve);
   }
 
-  setScreenName(options: { screenName: string; nameOverride: string; }): Promise<void> {
-    console.warn(options);
-    throw new Error("Method not implemented.");
+  setScreenName(_options: { screenName: string; nameOverride: string; }): Promise<void> {
+    return new Promise((resolve, _reject) => resolve);
   }
 
   reset(): Promise<void> {
-    throw new Error("Method not implemented.");
+    return new Promise((resolve, _reject) => resolve);
   }
 
   logEvent(options: { name: string; params: object; }): Promise<void> {
-    console.warn(options);
-    throw new Error("Method not implemented.");
-  }
+    return new Promise((resolve, reject) => {
+      if (firebase && firebase.analytics) {
+        const analytics = firebase.analytics();
+        const { name, params } = options;
 
-  
+        analytics.logEvent(name, params);
+        resolve();
+      } else {
+        reject('firebase is not initialized');
+      }
+    });
+  }
 }
 
 const FirebaseAnalytics = new FirebaseAnalyticsWeb();
