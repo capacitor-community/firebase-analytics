@@ -1,0 +1,50 @@
+{
+  "name": "firebase-analytics",
+  "version": "0.0.1",
+  "description": "Firebase Analytics for Capacitor Community",
+  "main": "dist/esm/index.js",
+  "types": "dist/esm/index.d.ts",
+  "scripts": {
+    "build": "npm run clean && tsc",
+    "clean": "rimraf ./dist",
+    "watch": "tsc --watch",
+    "prepublishOnly": "npm run build"
+  },
+  "author": "Priyank Patel <priyank.patel@stackspace.ca>",
+  "license": "",
+  "dependencies": {
+    "@capacitor/core": "latest"
+  },
+  "devDependencies": {
+    "rimraf": "^3.0.0",
+    "typescript": "^3.2.4",
+    "@capacitor/ios": "latest",
+    "@capacitor/android": "latest"
+  },
+  "files": [
+    "dist/",
+    "ios/",
+    "android/",
+    "FirebaseAnalytics.podspec"
+  ],
+  "keywords": [
+    "capacitor",
+    "plugin",
+    "native"
+  ],
+  "capacitor": {
+    "ios": {
+      "src": "ios"
+    },
+    "android": {
+      "src": "android"
+    }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:capacitor-community/firebase-analytics.git"
+  },
+  "bugs": {
+    "url": "git@github.com:capacitor-community/firebase-analytics.git/issues"
+  }
+}
