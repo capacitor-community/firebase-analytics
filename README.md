@@ -1,9 +1,142 @@
-# Capacitor Community Github Org
+# Capacitor Firebase Analytics Plugin
 
-The `capacitor-community` GitHub org seeks to bring together the highest quality Capacitor plugins and the Capacitor plugin authoring community into a single place and help users find high quality, well maintained Capacitor plugins.
+Capacitory community plugin for firebase analytics.
 
-Every plugin in the `capacitor-community` org commits to a base level of maintenance and quality control, and, as much as possible, follows a set of consistent design and code standards.
+## Maintainers
 
-Unlike the core Capacitor tooling and APIs, plugins in the `capacitor-community` are not maintained by the Ionic or Capacitor core team (though may be maintained by individuals on the team), but by the community and community maintainers. However, the Ionic and Capacitor team do facilitate and work closely with maintainers to ensure that plugins are kept up to date, follow the latest in Capacitor plugin standards, and have a broad set of useful functionality.
+| Maintainer | GitHub | Social | Sponsoring Company |
+| -----------| -------| -------| -------------------|
+| Priyank Patel | [priyankpat](https://github.com/priyankpat) | [@priyankpat_](https://twitter.com/priyankpat_) | Ionic |
 
-Beyond maintenance, plugin authors commit to providing a safe environment and adhere to the community Code of Conduct, and expect the same of all users.
+Mainteinance Status: Actively Maintained
+
+## Installation
+
+To use npm
+
+```bash
+npm install @capacitor/firebase-analytics
+```
+
+To use yarn
+
+```bash
+yarn add @capacitor/firebase-analytics
+```
+
+Sync native files
+
+```bash
+npx cap sync
+```
+
+On iOS, no further steps are needed.
+
+On Android, register the plugin in your main activity:
+
+```java
+import com.getcapacitor.community.firebaseanalytics.FirebaseAnalytics;
+
+public class MainActivity extends BridgeActivity {
+  @Override
+  public void onCreate(Bundle savedInstanceState) {
+    super.onCreate(savedInstanceState);
+
+    // Initializes the Bridge
+    this.init(savedInstanceState, new ArrayList<Class<? extends Plugin>>() {{
+      // Additional plugins you've installed go here
+      // Ex: add(TotallyAwesomePlugin.class);
+      add(FirebaseAnalytics.class);
+    }});
+  }
+}
+```
+
+## Configuration
+
+No configuration required for this plugin.
+
+## Supported methods
+
+| Name  | Android | iOS | Web
+| :---- | :--- | :--- | :--- |
+| setUserId | ✅ | ✅ | ❌ 
+| setUserProperty | ✅ | ✅ | ❌ 
+| getAppInstanceId | ✅ | ✅ | ❌ 
+| setScreenName | ✅ | ✅ | ❌ 
+| reset | ✅ | ✅ | ❌ 
+| logEvent | ✅ | ✅ | ❌ 
+
+## Usage
+
+```typescript
+// Must import the package once to make sure the web support initializes
+import '@capacitor-community/http';
+
+import { Plugins } from '@capacitor/core';
+
+const { FirebaseAnalytics } = Plugins;
+
+/**
+ * This method will allow you to set user id.
+ * @param userId - unique identifier of a user
+ * @returns void
+ * https://firebase.google.com/docs/analytics/userid
+ */
+FirebaseAnalytics.setUserId({
+  userId: 'john_doe_123',
+});
+
+/**
+ * This method will allow you to set user property.
+ * @param userId - unique identifier of a user
+ * @returns void
+ * https://firebase.google.com/docs/analytics/user-properties
+ */
+FirebaseAnalytics.setUserProperty({
+  name: 'favorite_food',
+  value: 'pizza',
+});
+
+/**
+ * This method will allow you to set user id.
+ * @param none
+ * @returns instanceId - individual instance id value
+ * https://firebase.google.com/docs/analytics/user-properties
+ */
+FirebaseAnalytics.getAppInstanceId();
+
+/**
+ * This method will allow you to track screens.
+ * @param screenName - name of the current screen to track
+ *        nameOverride - name of the screen class to override
+ * @returns instanceId - individual instance id value
+ * https://firebase.google.com/docs/analytics/screenviews
+ */
+FirebaseAnalytics.setScreenName({
+  screenName: 'login',
+  nameOverride: 'LoginScreen',
+});
+
+/**
+ * This method will clear all analytics data and reset the app instance id.
+ * @param none
+ * @returns void
+ */
+FirebaseAnalytics.reset();
+
+/**
+ * This method will log an app event.
+ * @param name - name of the event to log
+ *        params - key/value pairs of properties (25 maximum per event)
+ * @returns void
+ */
+FirebaseAnalytics.logEvent({
+  name: 'select_content',
+  params: {
+    content_type: 'image',
+    content_id: 'P12453',
+    items: [{ name: 'Kittens' }]
+  },
+});
+```
