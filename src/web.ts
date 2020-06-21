@@ -1,17 +1,19 @@
-import { WebPlugin } from '@capacitor/core';
-import { FirebaseAnalyticsPlugin } from './definitions';
+import { WebPlugin } from "@capacitor/core";
+
+import { FirebaseAnalyticsPlugin } from "./definitions";
 
 declare var firebase: any;
 
-export class FirebaseAnalyticsWeb extends WebPlugin implements FirebaseAnalyticsPlugin {
+export class FirebaseAnalyticsWeb extends WebPlugin
+  implements FirebaseAnalyticsPlugin {
   constructor() {
     super({
-      name: 'FirebaseAnalytics',
-      platforms: ['web']
+      name: "FirebaseAnalytics",
+      platforms: ["web"],
     });
   }
 
-  setUserId(options: { userId: string; }): Promise<void> {
+  setUserId(options: { userId: string }): Promise<void> {
     return new Promise((resolve, reject) => {
       if (firebase && firebase.analytics) {
         const analytics = firebase.analytics();
@@ -20,11 +22,11 @@ export class FirebaseAnalyticsWeb extends WebPlugin implements FirebaseAnalytics
         analytics.setUserId(userId);
         resolve();
       } else {
-        reject('firebase is not initialized');
+        reject("firebase is not initialized");
       }
     });
   }
-  setUserProperty(options: { name: string; value: string; }): Promise<void> {
+  setUserProperty(options: { name: string; value: string }): Promise<void> {
     return new Promise((resolve, reject) => {
       if (firebase && firebase.analytics) {
         const analytics = firebase.analytics();
@@ -35,16 +37,19 @@ export class FirebaseAnalyticsWeb extends WebPlugin implements FirebaseAnalytics
         analytics.setUserProperties(property);
         resolve();
       } else {
-        reject('firebase is not initialized');
+        reject("firebase is not initialized");
       }
     });
   }
 
-  getAppInstanceId(): Promise<{ instanceId: string; }> {
+  getAppInstanceId(): Promise<{ instanceId: string }> {
     return new Promise((resolve, _reject) => resolve);
   }
 
-  setScreenName(_options: { screenName: string; nameOverride: string; }): Promise<void> {
+  setScreenName(_options: {
+    screenName: string;
+    nameOverride: string;
+  }): Promise<void> {
     return new Promise((resolve, _reject) => resolve);
   }
 
@@ -52,7 +57,7 @@ export class FirebaseAnalyticsWeb extends WebPlugin implements FirebaseAnalytics
     return new Promise((resolve, _reject) => resolve);
   }
 
-  logEvent(options: { name: string; params: object; }): Promise<void> {
+  logEvent(options: { name: string; params: object }): Promise<void> {
     return new Promise((resolve, reject) => {
       if (firebase && firebase.analytics) {
         const analytics = firebase.analytics();
@@ -61,7 +66,7 @@ export class FirebaseAnalyticsWeb extends WebPlugin implements FirebaseAnalytics
         analytics.logEvent(name, params);
         resolve();
       } else {
-        reject('firebase is not initialized');
+        reject("firebase is not initialized");
       }
     });
   }
@@ -71,5 +76,5 @@ const FirebaseAnalytics = new FirebaseAnalyticsWeb();
 
 export { FirebaseAnalytics };
 
-import { registerWebPlugin } from '@capacitor/core';
+import { registerWebPlugin } from "@capacitor/core";
 registerWebPlugin(FirebaseAnalytics);
