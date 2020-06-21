@@ -1,6 +1,6 @@
 {
   "name": "@capacitor-community/firebase-analytics",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "A native plugin for firebase analytics.",
   "main": "dist/esm/index.js",
   "types": "dist/esm/index.d.ts",
@@ -21,6 +21,11 @@
     "typescript": "^3.2.4",
     "@capacitor/ios": "latest",
     "@capacitor/android": "latest"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "pretty-quick --staged"
+    }
   },
   "files": [
     "dist/",
