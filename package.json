@@ -17,10 +17,15 @@
     "@capacitor/core": "latest"
   },
   "devDependencies": {
-    "rimraf": "^3.0.2",
-    "typescript": "^3.9.5",
+    "@capacitor/android": "latest",
     "@capacitor/ios": "latest",
-    "@capacitor/android": "latest"
+    "husky": "^4.2.5",
+    "np": "^6.2.4",
+    "prettier": "^2.0.5",
+    "prettier-plugin-java": "^0.8.0",
+    "pretty-quick": "^2.0.1",
+    "rimraf": "^3.0.2",
+    "typescript": "^3.9.5"
   },
   "husky": {
     "hooks": {
