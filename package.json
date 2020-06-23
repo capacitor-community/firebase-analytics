@@ -1,6 +1,6 @@
 {
   "name": "@capacitor-community/firebase-analytics",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "A native plugin for firebase analytics.",
   "main": "dist/esm/index.js",
   "types": "dist/esm/index.d.ts",
