@@ -9,7 +9,7 @@
     "clean": "rimraf ./dist",
     "watch": "tsc --watch",
     "prepublishOnly": "npm run build",
-    "publish": "np"
+    "npm-publish": "np"
   },
   "author": "Priyank Patel <priyank.patel@stackspace.ca>",
   "license": "MIT",
