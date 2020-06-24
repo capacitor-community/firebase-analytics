@@ -1,6 +1,7 @@
 import Foundation
 import Capacitor
-import Firebase
+import FirebaseCore
+import FirebaseAnalytics
 
 /**
  * Please read the Capacitor iOS Plugin Development Guide
