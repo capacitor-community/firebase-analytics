@@ -63,6 +63,17 @@ public class MainActivity extends BridgeActivity {
 
 No configuration required for this plugin.
 
+## Examples
+
+[Click here](https://github.com/priyankpat/capacitor-plugins-example/tree/firebase-analytics) for example on how to implement this plugin
+
+You can also clone the repository
+
+```bash
+git clone https://github.com/priyankpat/capacitor-plugins-example
+git checkout -b firebase-analytics
+```
+
 ## Supported methods
 
 | Name             | Android | iOS | Web |
