@@ -4,9 +4,9 @@ Capacitory community plugin for firebase analytics.
 
 ## Maintainers
 
-| Maintainer | GitHub | Social | Sponsoring Company |
-| -----------| -------| -------| -------------------|
-| Priyank Patel | [priyankpat](https://github.com/priyankpat) | [@priyankpat_](https://twitter.com/priyankpat_) | Ionic |
+| Maintainer    | GitHub                                      | Social                                           | Sponsoring Company |
+| ------------- | ------------------------------------------- | ------------------------------------------------ | ------------------ |
+| Priyank Patel | [priyankpat](https://github.com/priyankpat) | [@priyankpat\_](https://twitter.com/priyankpat_) | Ionic              |
 
 Mainteinance Status: Actively Maintained
 
@@ -38,16 +38,23 @@ On Android, register the plugin in your main activity:
 import com.getcapacitor.community.firebaseanalytics.FirebaseAnalytics;
 
 public class MainActivity extends BridgeActivity {
+
   @Override
   public void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
 
     // Initializes the Bridge
-    this.init(savedInstanceState, new ArrayList<Class<? extends Plugin>>() {{
-      // Additional plugins you've installed go here
-      // Ex: add(TotallyAwesomePlugin.class);
-      add(FirebaseAnalytics.class);
-    }});
+    this.init(
+        savedInstanceState,
+        new ArrayList<Class<? extends Plugin>>() {
+
+          {
+            // Additional plugins you've installed go here
+            // Ex: add(TotallyAwesomePlugin.class);
+            add(FirebaseAnalytics.class);
+          }
+        }
+      );
   }
 }
 ```
@@ -58,22 +65,22 @@ No configuration required for this plugin.
 
 ## Supported methods
 
-| Name  | Android | iOS | Web
-| :---- | :--- | :--- | :--- |
-| setUserId | ✅ | ✅ | ❌ 
-| setUserProperty | ✅ | ✅ | ❌ 
-| getAppInstanceId | ✅ | ✅ | ❌ 
-| setScreenName | ✅ | ✅ | ❌ 
-| reset | ✅ | ✅ | ❌ 
-| logEvent | ✅ | ✅ | ❌ 
+| Name             | Android | iOS | Web |
+| :--------------- | :------ | :-- | :-- |
+| setUserId        | ✅      | ✅  | ❌  |
+| setUserProperty  | ✅      | ✅  | ❌  |
+| getAppInstanceId | ✅      | ✅  | ❌  |
+| setScreenName    | ✅      | ✅  | ❌  |
+| reset            | ✅      | ✅  | ❌  |
+| logEvent         | ✅      | ✅  | ❌  |
 
 ## Usage
 
 ```typescript
 // Must import the package once to make sure the web support initializes
-import '@capacitor-community/http';
+import "@capacitor/firebase-analytics";
 
-import { Plugins } from '@capacitor/core';
+import { Plugins } from "@capacitor/core";
 
 const { FirebaseAnalytics } = Plugins;
 
@@ -84,7 +91,7 @@ const { FirebaseAnalytics } = Plugins;
  * https://firebase.google.com/docs/analytics/userid
  */
 FirebaseAnalytics.setUserId({
-  userId: 'john_doe_123',
+  userId: "john_doe_123",
 });
 
 /**
@@ -94,8 +101,8 @@ FirebaseAnalytics.setUserId({
  * https://firebase.google.com/docs/analytics/user-properties
  */
 FirebaseAnalytics.setUserProperty({
-  name: 'favorite_food',
-  value: 'pizza',
+  name: "favorite_food",
+  value: "pizza",
 });
 
 /**
@@ -114,8 +121,8 @@ FirebaseAnalytics.getAppInstanceId();
  * https://firebase.google.com/docs/analytics/screenviews
  */
 FirebaseAnalytics.setScreenName({
-  screenName: 'login',
-  nameOverride: 'LoginScreen',
+  screenName: "login",
+  nameOverride: "LoginScreen",
 });
 
 /**
@@ -132,11 +139,11 @@ FirebaseAnalytics.reset();
  * @returns void
  */
 FirebaseAnalytics.logEvent({
-  name: 'select_content',
+  name: "select_content",
   params: {
-    content_type: 'image',
-    content_id: 'P12453',
-    items: [{ name: 'Kittens' }]
+    content_type: "image",
+    content_id: "P12453",
+    items: [{ name: "Kittens" }],
   },
 });
 ```
