@@ -15,13 +15,13 @@ Maintenance Status: Actively Maintained
 Using npm:
 
 ```bash
-npm install @capacitor/firebase-analytics
+npm install @capacitor-community/firebase-analytics
 ```
 
 Using yarn:
 
 ```bash
-yarn add @capacitor/firebase-analytics
+yarn add @capacitor-community/firebase-analytics
 ```
 
 Sync native files:
