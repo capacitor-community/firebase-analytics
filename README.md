@@ -1,6 +1,6 @@
 # Capacitor Firebase Analytics Plugin
 
-Capacitory community plugin for firebase analytics.
+Capacitor community plugin for Firebase Analytics.
 
 ## Maintainers
 
@@ -8,23 +8,23 @@ Capacitory community plugin for firebase analytics.
 | ------------- | ------------------------------------------- | ------------------------------------------------ | ------------------ |
 | Priyank Patel | [priyankpat](https://github.com/priyankpat) | [@priyankpat\_](https://twitter.com/priyankpat_) | Ionic              |
 
-Mainteinance Status: Actively Maintained
+Maintenance Status: Actively Maintained
 
 ## Installation
 
-To use npm
+Using npm:
 
 ```bash
 npm install @capacitor/firebase-analytics
 ```
 
-To use yarn
+Using yarn:
 
 ```bash
 yarn add @capacitor/firebase-analytics
 ```
 
-Sync native files
+Sync native files:
 
 ```bash
 npx cap sync
@@ -61,13 +61,13 @@ public class MainActivity extends BridgeActivity {
 
 ## Configuration
 
-No configuration required for this plugin.
+No configuration is required for this plugin.
 
 ## Examples
 
-[Click here](https://github.com/priyankpat/capacitor-plugins-example/tree/firebase-analytics) for example on how to implement this plugin
+[Click here](https://github.com/priyankpat/capacitor-plugins-example/tree/firebase-analytics) for an example on how to implement this plugin.
 
-You can also clone the repository
+You can also clone the repository:
 
 ```bash
 git clone https://github.com/priyankpat/capacitor-plugins-example
