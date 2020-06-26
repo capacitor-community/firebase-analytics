@@ -162,4 +162,24 @@ public class FirebaseAnalytics extends Plugin {
       call.error(ex.getLocalizedMessage());
     }
   }
+
+  @PluginMethod()
+  public void enable(PluginCall call) {
+      try {
+          analytics.setAnalyticsCollectionEnabled(true);
+          call.success();
+      } catch (Exception e) {
+          call.reject(e.getLocalizedMessage(), e);
+      }
+  }
+  
+  @PluginMethod()
+  public void disable(PluginCall call) {
+      try {
+          analytics.setAnalyticsCollectionEnabled(false);
+          call.success();
+      } catch (Exception e) {
+          call.reject(e.getLocalizedMessage(), e);
+      }
+  }
 }

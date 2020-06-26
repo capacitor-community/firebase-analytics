@@ -76,4 +76,18 @@ public class FirebaseAnalytics: CAPPlugin {
             call.reject("name is missing")
         }
     }
+
+    @objc func enable(_ call: CAPPluginCall) {
+        DispatchQueue.main.async {
+            Analytics.setAnalyticsCollectionEnabled(true)
+            call.success()
+        }
+    }
+  
+    @objc func disable(_ call: CAPPluginCall) {
+            DispatchQueue.main.async {
+            Analytics.setAnalyticsCollectionEnabled(false)
+            call.success()
+        }
+    }
 }
