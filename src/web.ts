@@ -10,7 +10,7 @@ export class FirebaseAnalyticsWeb extends WebPlugin
   private options_missing_mssg = "Firebase options are missing";
   private duplicate_app_mssg = "Firebase app already exists";
   private analytics_missing_mssg =
-    "Firebase analytics is not initialize. Make sure initialize() is called once";
+    "Firebase analytics is not initialize. Make sure initializeFirebase() is called once";
 
   public readonly ready: Promise<any>;
   private readyResolver: Function;
