@@ -19,11 +19,11 @@
 
 ## Maintainers
 
-| Maintainer     | GitHub                                                  | Social                                           | Sponsoring Company |
-| -------------- | ------------------------------------------------------- | ------------------------------------------------ | ------------------ |
-| Priyank Patel  | [priyankpat](https://github.com/priyankpat)             | [@priyankpat\_](https://twitter.com/priyankpat_) | Ionic              |
-| Stewan Silva   | [stewwan](https://github.com/stewwan)                   | [@StewanSilva](https://twitter.com/StewanSilva)  | Ionic              |
-| Daniel Pereira | [danielprrazevedo](https://github.com/danielprrazevedo) | [@DandanPrr](https://twitter.com/DandanPrr)      | Ionic              |
+| Maintainer     | GitHub                                                  | Social                                           |
+| -------------- | ------------------------------------------------------- | ------------------------------------------------ |
+| Priyank Patel  | [priyankpat](https://github.com/priyankpat)             | [@priyankpat\_](https://twitter.com/priyankpat_) |
+| Stewan Silva   | [stewwan](https://github.com/stewwan)                   | [@StewanSilva](https://twitter.com/StewanSilva)  |
+| Daniel Pereira | [danielprrazevedo](https://github.com/danielprrazevedo) | [@DandanPrr](https://twitter.com/DandanPrr)      |
 
 ## Installation
 
