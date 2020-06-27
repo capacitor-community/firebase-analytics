@@ -80,12 +80,12 @@ git checkout -b firebase-analytics
 
 | Name             | Android | iOS | Web |
 | :--------------- | :------ | :-- | :-- |
-| setUserId        | ✅      | ✅  | ❌  |
-| setUserProperty  | ✅      | ✅  | ❌  |
+| setUserId        | ✅      | ✅  | ✅  |
+| setUserProperty  | ✅      | ✅  | ✅  |
 | getAppInstanceId | ✅      | ✅  | ❌  |
 | setScreenName    | ✅      | ✅  | ❌  |
-| reset            | ✅      | ✅  | ❌  |
-| logEvent         | ✅      | ✅  | ❌  |
+| reset            | ✅      | ✅  | ✅  |
+| logEvent         | ✅      | ✅  | ✅  |
 
 ## Usage
 
