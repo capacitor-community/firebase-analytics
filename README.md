@@ -4,11 +4,10 @@ Capacitor community plugin for Firebase Analytics.
 
 ## Maintainers
 
-| Maintainer     | GitHub                                                  | Social                                           | Sponsoring Company |
-| -------------- | ------------------------------------------------------- | ------------------------------------------------ | ------------------ |
-| Priyank Patel  | [priyankpat](https://github.com/priyankpat)             | [@priyankpat\_](https://twitter.com/priyankpat_) | Ionic              |
-| Stewan Silva   | [stewwan](https://github.com/stewwan)                   | [@StewanSilva](https://twitter.com/StewanSilva)  | Ionic              |
-| Daniel Pereira | [danielprrazevedo](https://github.com/danielprrazevedo) | [@DandanPrr](https://twitter.com/DandanPrr)      | Ionic              |
+| Maintainer    | GitHub                                      | Social                                           | Sponsoring Company |
+| ------------- | ------------------------------------------- | ------------------------------------------------ | ------------------ |
+| Priyank Patel | [priyankpat](https://github.com/priyankpat) | [@priyankpat\_](https://twitter.com/priyankpat_) | Ionic              |
+| Stewan Silva  | [stewwan](https://github.com/stewwan)       | [@StewanSilva](https://twitter.com/StewanSilva)  | Ionic              |
 
 Maintenance Status: Actively Maintained
 
@@ -181,7 +180,7 @@ Download the `google-services.json` file and copy it to `android/app/` directory
 
 - `ionic start my-cap-app --capacitor`
 - `cd my-cap-app`
-- `npm install --save @capacitor-community/analytics`
+- `npm install --save @capacitor-community/firebase-analytics`
 - `mkdir www && touch www/index.html`
 - `sudo gem install cocoapods` (only once)
 - `npx cap add ios`
@@ -203,7 +202,7 @@ Download the `google-services.json` file and copy it to `android/app/` directory
 
 - `ionic start my-cap-app --capacitor`
 - `cd my-cap-app`
-- `npm install --save @capacitor-community/analytics`
+- `npm install --save @capacitor-community/firebase-analytics`
 - `mkdir www && touch www/index.html`
 - `npx cap add android`
 - `npx cap sync android` (every time you run `npm install`)
@@ -227,10 +226,16 @@ For existing projects you can upgrade all capacitor related packages (including 
 
 If you were previously using the `capacitor-analytics` package from npm
 
-1. rename dep in package.json from `capacitor-analytics` to `@capacitor-community/analytics`
+1. rename dep in package.json from `capacitor-analytics` to `@capacitor-community/firebase-analytics`
 2. on android's _MainActivity.java_ change the import path from `io.stewan.capacitor.analytics.AnalyticsPlugin;` to `com.getcapacitor.community.firebaseanalytics.FirebaseAnalytics;`
 3. public api changes
    - `instance()` is now `getAppInstanceId()`
    - `setScreen()` is now `setScreenName()`
    - `setUserID()` is now `setUserId()`
    - `setUserProp()` us now `setUserProperty()`
+
+## Further info
+
+- [Android](https://firebase.google.com/docs/android/setup)
+- [iOS](https://firebase.google.com/docs/analytics/get-started?platform=ios)
+- [Web](https://firebase.google.com/docs/analytics/get-started?platform=web)
