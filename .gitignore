@@ -37,6 +37,7 @@ android-template/app/app.iml
 android/.gradle/
 android/build/
 android/*.iml
+android/android.iml
 android/.idea/workspace.xml
 android/.idea/tasks.xml
 android/.idea/gradle.xml
