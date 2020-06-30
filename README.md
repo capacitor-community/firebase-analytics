@@ -212,6 +212,7 @@ FirebaseAnalytics.setCollectionEnabled({
 
 /**
  * Platform: Web/Android/iOS
+ * Deprecated - use setCollectionEnabled() instead
  * Enable analytics collection for this app on this device.
  * @param none
  * @returns void
@@ -229,7 +230,6 @@ FirebaseAnalytics.disable();
 
 /**
  * Platform: Web/Android/iOS
- * Deprecated - use setCollectionEnabled() instead
  * Sets the duration of inactivity that terminates the current session.
  * @param duration - duration in seconds (default - 18000)
  * @returns void
