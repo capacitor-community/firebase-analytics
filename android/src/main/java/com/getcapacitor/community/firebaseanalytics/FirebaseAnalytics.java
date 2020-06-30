@@ -248,9 +248,11 @@ public class FirebaseAnalytics extends Plugin {
   }
 
   /**
+   * Deprecated: use setCollectionEnabled() instead
    * Enable analytics collection for this app on this device.
    * @param call - enabled: boolean true/false to enable/disable logging
    */
+  @Deprecated
   @PluginMethod
   public void enable(PluginCall call) {
     if (mFirebaseAnalytics == null) {
@@ -263,9 +265,11 @@ public class FirebaseAnalytics extends Plugin {
   }
 
   /**
+   * Deprecated: use setCollectionEnabled() instead
    * Disable analytics collection for this app on this device.
    * @param call
    */
+  @Deprecated
   @PluginMethod
   public void disable(PluginCall call) {
     if (mFirebaseAnalytics == null) {
