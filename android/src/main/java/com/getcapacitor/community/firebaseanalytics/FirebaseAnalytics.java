@@ -248,6 +248,36 @@ public class FirebaseAnalytics extends Plugin {
   }
 
   /**
+   * Enable analytics collection for this app on this device.
+   * @param call - enabled: boolean true/false to enable/disable logging
+   */
+  @PluginMethod
+  public void enable(PluginCall call) {
+    if (mFirebaseAnalytics == null) {
+      call.error(MISSING_REF_MSSG);
+      return;
+    }
+
+    mFirebaseAnalytics.setAnalyticsCollectionEnabled(true);
+    call.success();
+  }
+
+  /**
+   * Disable analytics collection for this app on this device.
+   * @param call
+   */
+  @PluginMethod
+  public void disable(PluginCall call) {
+    if (mFirebaseAnalytics == null) {
+      call.error(MISSING_REF_MSSG);
+      return;
+    }
+
+    mFirebaseAnalytics.setAnalyticsCollectionEnabled(false);
+    call.success();
+  }
+
+  /**
    * Sets the duration of inactivity that terminates the current session.
    * @param call: options - duration: duration of inactivity
    */

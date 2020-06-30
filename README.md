@@ -19,11 +19,12 @@
 
 ## Maintainers
 
-| Maintainer     | GitHub                                                  | Social                                           |
-| -------------- | ------------------------------------------------------- | ------------------------------------------------ |
-| Priyank Patel  | [priyankpat](https://github.com/priyankpat)             | [@priyankpat\_](https://twitter.com/priyankpat_) |
-| Stewan Silva   | [stewwan](https://github.com/stewwan)                   | [@StewanSilva](https://twitter.com/StewanSilva)  |
-| Daniel Pereira | [danielprrazevedo](https://github.com/danielprrazevedo) | [@DandanPrr](https://twitter.com/DandanPrr)      |
+| Maintainer    | GitHub                                      | Social                                           | Sponsoring Company |
+| ------------- | ------------------------------------------- | ------------------------------------------------ | ------------------ |
+| Priyank Patel | [priyankpat](https://github.com/priyankpat) | [@priyankpat\_](https://twitter.com/priyankpat_) | Ionic              |
+| Stewan Silva  | [stewwan](https://github.com/stewwan)       | [@StewanSilva](https://twitter.com/StewanSilva)  | Ionic              |
+
+Maintenance Status: Actively Maintained
 
 ## Installation
 
@@ -101,6 +102,8 @@ git checkout -b firebase-analytics
 | logEvent                  | ✅      | ✅  | ✅  |
 | setCollectionEnabled      | ✅      | ✅  | ✅  |
 | setSessionTimeoutDuration | ✅      | ✅  | ✅  |
+| enable                    | ✅      | ✅  | ❌  |
+| disable                   | ✅      | ✅  | ❌  |
 
 ## Usage
 
@@ -217,3 +220,81 @@ FirebaseAnalytics.setSessionTimeoutDuration({
   duration: 10000,
 });
 ```
+
+## Setup
+
+Navigate to the project settings page for your app on Firebase.
+
+### iOS
+
+Download the `GoogleService-Info.plist` file. In Xcode right-click on the yellow folder named "App" and select the `Add files to "App"`.
+
+> Tip: if you drag and drop your file to this location, Xcode may not be able to find it.
+
+### Android
+
+Download the `google-services.json` file and copy it to `android/app/` directory of your capacitor project.
+
+## iOS setup
+
+- `ionic start my-cap-app --capacitor`
+- `cd my-cap-app`
+- `npm install --save @capacitor-community/firebase-analytics`
+- `mkdir www && touch www/index.html`
+- `sudo gem install cocoapods` (only once)
+- `npx cap add ios`
+- `npx cap sync ios` (every time you run `npm install`)
+- `npx cap open ios`
+- sign your app at xcode (general tab)
+- add `GoogleService-Info.plist` to the app folder in xcode
+
+### Enable debug view
+
+1. In Xcode, select Product > Scheme > Edit scheme
+2. Select Run from the left menu
+3. Select the Arguments tab
+4. In the Arguments Passed On Launch section, add `-FIRAnalyticsDebugEnabled`
+
+> Tip: every time you change a native code you may need to clean up the cache (Product > Clean build folder) and then run the app again.
+
+## Android setup
+
+- `ionic start my-cap-app --capacitor`
+- `cd my-cap-app`
+- `npm install --save @capacitor-community/firebase-analytics`
+- `mkdir www && touch www/index.html`
+- `npx cap add android`
+- `npx cap sync android` (every time you run `npm install`)
+- `npx cap open android`
+- add `google-services.json` to your `android/app` folder
+- `[extra step]` in android case we need to tell Capacitor to initialise the plugin:
+
+> on your `MainActivity.java` file add `import com.getcapacitor.community.firebaseanalytics.FirebaseAnalytics;` and then inside the init callback `add(AnalyticsPlugin.class);`
+
+Now you should be set to go. Try to run your client using `ionic cap run android --livereload --address=0.0.0.0`.
+
+> Tip: every time you change a native code you may need to clean up the cache (Build > Clean Project | Build > Rebuild Project) and then run the app again.
+
+## Updating
+
+For existing projects you can upgrade all capacitor related packages (including this plugin) with this single command
+
+`npx npm-upgrade '*capacitor*' && npm install`
+
+## Migration
+
+If you were previously using the `capacitor-analytics` package from npm
+
+1. rename dep in package.json from `capacitor-analytics` to `@capacitor-community/firebase-analytics`
+2. on android's _MainActivity.java_ change the import path from `io.stewan.capacitor.analytics.AnalyticsPlugin;` to `com.getcapacitor.community.firebaseanalytics.FirebaseAnalytics;`
+3. public api changes
+   - `instance()` is now `getAppInstanceId()`
+   - `setScreen()` is now `setScreenName()`
+   - `setUserID()` is now `setUserId()`
+   - `setUserProp()` us now `setUserProperty()`
+
+## Further info
+
+- [Android](https://firebase.google.com/docs/android/setup)
+- [iOS](https://firebase.google.com/docs/analytics/get-started?platform=ios)
+- [Web](https://firebase.google.com/docs/analytics/get-started?platform=web)

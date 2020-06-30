@@ -221,6 +221,34 @@ export class FirebaseAnalyticsWeb extends WebPlugin
     return this.analyticsRef;
   }
 
+  enable(): Promise<void> {
+    return new Promise(async (resolve, reject) => {
+      await this.ready;
+
+      if (!this.analyticsRef) {
+        reject(this.analytics_missing_mssg);
+        return;
+      }
+
+      this.analyticsRef.setAnalyticsCollectionEnabled(true);
+      resolve();
+    });
+  }
+
+  disable(): Promise<void> {
+    return new Promise(async (resolve, reject) => {
+      await this.ready;
+
+      if (!this.analyticsRef) {
+        reject(this.analytics_missing_mssg);
+        return;
+      }
+
+      this.analyticsRef.setAnalyticsCollectionEnabled(false);
+      resolve();
+    });
+  }
+
   /**
    * Ready resolver to check and load firebase analytics
    */
