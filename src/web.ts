@@ -70,6 +70,14 @@ export class FirebaseAnalyticsWeb extends WebPlugin
       }
     });
   }
+
+  enable(): Promise<void> {
+    return new Promise((resolve, _reject) => resolve);
+  }
+
+  disable(): Promise<void> {
+    return new Promise((resolve, _reject) => resolve);
+  }
 }
 
 const FirebaseAnalytics = new FirebaseAnalyticsWeb();

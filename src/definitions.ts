@@ -14,4 +14,6 @@ export interface FirebaseAnalyticsPlugin {
   }): Promise<void>;
   reset(): Promise<void>;
   logEvent(options: { name: string; params: object }): Promise<void>;
+  enable(): Promise<void>;
+  disable(): Promise<void>;
 }
