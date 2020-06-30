@@ -118,17 +118,21 @@ public class FirebaseAnalytics: CAPPlugin {
         Analytics.setSessionTimeoutInterval(TimeInterval(duration))
     }
 
+    /// Deprecated - use setCollectionEnabled instead
+    /// Enable analytics collection for this app on this device.
+    /// - Parameter call
+    @available(*, deprecated, renamed: "setCollectionEnabled")
     @objc func enable(_ call: CAPPluginCall) {
-        DispatchQueue.main.async {
-            Analytics.setAnalyticsCollectionEnabled(true)
-            call.success()
-        }
+        Analytics.setAnalyticsCollectionEnabled(true)
+        call.success()
     }
   
+    /// Deprecated - use setCollectionEnabled instead
+    /// Disable analytics collection for this app on this device.
+    /// - Parameter call
+    @available(*, deprecated, renamed: "setCollectionEnabled")
     @objc func disable(_ call: CAPPluginCall) {
-            DispatchQueue.main.async {
-            Analytics.setAnalyticsCollectionEnabled(false)
-            call.success()
-        }
+        Analytics.setAnalyticsCollectionEnabled(false)
+        call.success()
     }
 }
