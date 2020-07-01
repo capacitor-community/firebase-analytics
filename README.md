@@ -4,10 +4,9 @@ Capacitor community plugin for Firebase Analytics.
 
 ## Maintainers
 
-| Maintainer    | GitHub                                      | Social                                           | Sponsoring Company |
-| ------------- | ------------------------------------------- | ------------------------------------------------ | ------------------ |
-| Priyank Patel | [priyankpat](https://github.com/priyankpat) | [@priyankpat\_](https://twitter.com/priyankpat_) | Ionic              |
-| Stewan Silva  | [stewwan](https://github.com/stewwan)       | [@StewanSilva](https://twitter.com/StewanSilva)  | Ionic              |
+| Maintainer    | GitHub                                      | Social                                           |
+| ------------- | ------------------------------------------- | ------------------------------------------------ |
+| Stewan Silva  | [stewwan](https://github.com/stewwan)       | [@StewanSilva](https://twitter.com/StewanSilva)  |
 
 Maintenance Status: Actively Maintained
 
