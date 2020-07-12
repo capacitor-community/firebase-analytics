@@ -109,7 +109,7 @@ git checkout -b firebase-analytics
 
 ```typescript
 // Must import the package once to make sure the web support initializes
-import "@capacitor/firebase-analytics";
+import "@capacitor-community/firebase-analytics";
 
 import { Plugins } from "@capacitor/core";
 
