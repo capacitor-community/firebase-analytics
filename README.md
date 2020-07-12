@@ -1,13 +1,28 @@
-# Capacitor Firebase Analytics Plugin
+<p align="center"><br><img src="https://user-images.githubusercontent.com/236501/85893648-1c92e880-b7a8-11ea-926d-95355b8175c7.png" width="128" height="128" /></p>
+<h3 align="center">Firebase Analytics</h3>
+<p align="center"><strong><code>@capacitor-community/firebase-analytics</code></strong></p>
+<p align="center">
+  Capacitor community plugin for native <a href="https://firebase.google.com/docs/analytics">Firebase Analytics</a>.
+</p>
 
-Capacitor community plugin for Firebase Analytics.
+<p align="center">
+  <img src="https://img.shields.io/maintenance/yes/2020?style=flat-square" />
+  <a href="https://github.com/capacitor-community/firebase-analytics/actions?query=workflow%3A%22Test+and+Build+Plugin%22"><img src="https://img.shields.io/github/workflow/status/capacitor-community/firebase-analytics/Test%20and%20Build%20Plugin?style=flat-square" /></a>
+  <a href="https://www.npmjs.com/package/@capacitor-community/firebase-analytics"><img src="https://img.shields.io/npm/l/@capacitor-community/firebase-analytics?style=flat-square" /></a>
+<br>
+  <a href="https://www.npmjs.com/package/@capacitor-community/firebase-analytics"><img src="https://img.shields.io/npm/dw/@capacitor-community/firebase-analytics?style=flat-square" /></a>
+  <a href="https://www.npmjs.com/package/@capacitor-community/firebase-analytics"><img src="https://img.shields.io/npm/v/@capacitor-community/firebase-analytics?style=flat-square" /></a>
+<!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
+<a href="#contributors-"><img src="https://img.shields.io/badge/all%20contributors-3-orange?style=flat-square" /></a>
+<!-- ALL-CONTRIBUTORS-BADGE:END -->
+</p>
 
 ## Maintainers
 
-| Maintainer    | GitHub                                      | Social                                           | Sponsoring Company |
-| ------------- | ------------------------------------------- | ------------------------------------------------ | ------------------ |
-| Priyank Patel | [priyankpat](https://github.com/priyankpat) | [@priyankpat\_](https://twitter.com/priyankpat_) | Ionic              |
-| Stewan Silva  | [stewwan](https://github.com/stewwan)       | [@StewanSilva](https://twitter.com/StewanSilva)  | Ionic              |
+| Maintainer    | GitHub                                      | Social                                           |
+| ------------- | ------------------------------------------- | ------------------------------------------------ |
+| Priyank Patel | [priyankpat](https://github.com/priyankpat) | [@priyankpat\_](https://twitter.com/priyankpat_) |
+| Stewan Silva  | [stewwan](https://github.com/stewwan)       | [@StewanSilva](https://twitter.com/StewanSilva)  |
 
 Maintenance Status: Actively Maintained
 
@@ -77,29 +92,48 @@ git checkout -b firebase-analytics
 
 ## Supported methods
 
-| Name             | Android | iOS | Web |
-| :--------------- | :------ | :-- | :-- |
-| setUserId        | ✅      | ✅  | ✅  |
-| setUserProperty  | ✅      | ✅  | ✅  |
-| getAppInstanceId | ✅      | ✅  | ❌  |
-| setScreenName    | ✅      | ✅  | ❌  |
-| reset            | ✅      | ✅  | ✅  |
-| logEvent         | ✅      | ✅  | ✅  |
-| enable           | ✅      | ✅  | ❌  |
-| disable          | ✅      | ✅  | ❌  |
+| Name                      | Android | iOS | Web |
+| :------------------------ | :------ | :-- | :-- |
+| setUserId                 | ✅      | ✅  | ✅  |
+| setUserProperty           | ✅      | ✅  | ✅  |
+| getAppInstanceId          | ✅      | ✅  | ❌  |
+| setScreenName             | ✅      | ✅  | ❌  |
+| reset                     | ✅      | ✅  | ✅  |
+| logEvent                  | ✅      | ✅  | ✅  |
+| setCollectionEnabled      | ✅      | ✅  | ✅  |
+| setSessionTimeoutDuration | ✅      | ✅  | ✅  |
+| enable                    | ✅      | ✅  | ❌  |
+| disable                   | ✅      | ✅  | ❌  |
 
 ## Usage
 
 ```typescript
 // Must import the package once to make sure the web support initializes
-import "@capacitor/firebase-analytics";
+import "@capacitor-community/firebase-analytics";
 
 import { Plugins } from "@capacitor/core";
 
 const { FirebaseAnalytics } = Plugins;
 
 /**
- * This method will allow you to set user id.
+ * Platform: Web
+ * Configure and initialize the firebase app.
+ * @param options - firebase web app configuration options
+ * */
+FirebaseAnalytics.initializeFirebase({
+  apiKey: "...",
+  authDomain: "...",
+  databaseURL: "...",
+  projectId: "...",
+  storageBucket: "...",
+  messagingSenderId: "...",
+  appId: "...",
+  measurementId: "...",
+});
+
+/**
+ * Platform: Web/Android/iOS
+ * Sets the user ID property.
  * @param userId - unique identifier of a user
  * @returns void
  * https://firebase.google.com/docs/analytics/userid
@@ -109,7 +143,8 @@ FirebaseAnalytics.setUserId({
 });
 
 /**
- * This method will allow you to set user property.
+ * Platform: Web/Android/iOS
+ * Sets a user property to a given value.
  * @param userId - unique identifier of a user
  * @returns void
  * https://firebase.google.com/docs/analytics/user-properties
@@ -120,7 +155,8 @@ FirebaseAnalytics.setUserProperty({
 });
 
 /**
- * This method will allow you to set user id.
+ * Platform: Android/iOS
+ * Retrieves the app instance id from the service.
  * @param none
  * @returns instanceId - individual instance id value
  * https://firebase.google.com/docs/analytics/user-properties
@@ -128,7 +164,8 @@ FirebaseAnalytics.setUserProperty({
 FirebaseAnalytics.getAppInstanceId();
 
 /**
- * This method will allow you to track screens.
+ * Platform: Android/iOS
+ * Sets the current screen name, which specifies the current visual context in your app.
  * @param screenName - name of the current screen to track
  *        nameOverride - name of the screen class to override
  * @returns instanceId - individual instance id value
@@ -140,14 +177,16 @@ FirebaseAnalytics.setScreenName({
 });
 
 /**
- * This method will clear all analytics data and reset the app instance id.
+ * Platform: Web/Android/iOS
+ * Clears all analytics data for this app from the device and resets the app instance id.
  * @param none
  * @returns void
  */
 FirebaseAnalytics.reset();
 
 /**
- * This method will log an app event.
+ * Platform: Web/Android/iOS
+ * Logs an app event.
  * @param name - name of the event to log
  *        params - key/value pairs of properties (25 maximum per event)
  * @returns void
@@ -159,6 +198,44 @@ FirebaseAnalytics.logEvent({
     content_id: "P12453",
     items: [{ name: "Kittens" }],
   },
+});
+
+/**
+ * Platform: Web/Android/iOS
+ * Sets whether analytics collection is enabled for this app on this device.
+ * @param name - enabled - boolean true/false
+ * @returns void
+ */
+FirebaseAnalytics.setCollectionEnabled({
+  enabled: false,
+});
+
+/**
+ * Platform: Web/Android/iOS
+ * Deprecated - use setCollectionEnabled() instead
+ * Enable analytics collection for this app on this device.
+ * @param none
+ * @returns void
+ */
+FirebaseAnalytics.enable();
+
+/**
+ * Platform: Web/Android/iOS
+ * Deprecated - use setCollectionEnabled() instead
+ * Disable analytics collection for this app on this device.
+ * @param none
+ * @returns void
+ */
+FirebaseAnalytics.disable();
+
+/**
+ * Platform: Web/Android/iOS
+ * Sets the duration of inactivity that terminates the current session.
+ * @param duration - duration in seconds (default - 18000)
+ * @returns void
+ */
+FirebaseAnalytics.setSessionTimeoutDuration({
+  duration: 10000,
 });
 ```
 
