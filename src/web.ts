@@ -217,7 +217,7 @@ export class FirebaseAnalyticsWeb extends WebPlugin
   /**
    * Returns analytics reference object
    */
-  get remoteConfig() {
+  remoteConfig() {
     return this.analyticsRef;
   }
 
