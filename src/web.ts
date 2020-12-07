@@ -289,7 +289,7 @@ export class FirebaseAnalyticsWeb extends WebPlugin
         document.getElementById(scripts[0]) &&
         document.getElementById(scripts[1])
       ) {
-        return resolve();
+        return resolve( null );
       }
 
       await this.loadScript(firebaseAppScript.key, firebaseAppScript.src);
@@ -297,7 +297,7 @@ export class FirebaseAnalyticsWeb extends WebPlugin
         firebaseAnalyticsScript.key,
         firebaseAnalyticsScript.src
       );
-      resolve();
+      resolve( null );
     });
   }
 
