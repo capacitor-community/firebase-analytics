@@ -8,7 +8,6 @@ export class FirebaseAnalyticsWeb extends WebPlugin
   implements FirebaseAnalyticsPlugin {
   private not_supported_mssg = "This method is not supported";
   private options_missing_mssg = "Firebase options are missing";
-  private duplicate_app_mssg = "Firebase app already exists";
   private analytics_missing_mssg =
     "Firebase analytics is not initialized. Make sure initializeFirebase() is called once";
 
@@ -47,17 +46,12 @@ export class FirebaseAnalyticsWeb extends WebPlugin
     return new Promise(async (resolve, reject) => {
       await this.ready;
 
-      if (this.hasFirebaseInitialized()) {
-        reject(this.duplicate_app_mssg);
-        return;
-      }
-
       if (!options) {
         reject(this.options_missing_mssg);
         return;
       }
 
-      const app = window.firebase.initializeApp(options);
+      const app = this.hasFirebaseInitialized() ? window.firebase : window.firebase.initializeApp(options);
       this.analyticsRef = app.analytics();
       resolve(this.analyticsRef);
     });
