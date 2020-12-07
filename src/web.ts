@@ -273,26 +273,8 @@ export class FirebaseAnalyticsWeb extends WebPlugin
   /**
    * Check for existing loaded script and load new scripts
    */
-  private loadScripts() {
-    const firebaseAppScript = this.scripts[0];
-    const firebaseAnalyticsScript = this.scripts[1];
-
-    return new Promise(async (resolve, _reject) => {
-      const scripts = this.scripts.map((script) => script.key);
-      if (
-        document.getElementById(scripts[0]) &&
-        document.getElementById(scripts[1])
-      ) {
-        return resolve( null );
-      }
-
-      await this.loadScript(firebaseAppScript.key, firebaseAppScript.src);
-      await this.loadScript(
-        firebaseAnalyticsScript.key,
-        firebaseAnalyticsScript.src
-      );
-      resolve( null );
-    });
+  private loadScripts(): Promise<Array<any>> {
+    return Promise.all( this.scripts.map( s => this.loadScript(s.key, s.src) ) )
   }
 
   /**
@@ -302,13 +284,17 @@ export class FirebaseAnalyticsWeb extends WebPlugin
    */
   private loadScript(id: string, src: string): Promise<any> {
     return new Promise((resolve, reject) => {
-      const file = document.createElement("script");
-      file.type = "text/javascript";
-      file.src = src;
-      file.id = id;
-      file.onload = resolve;
-      file.onerror = reject;
-      document.querySelector("head").appendChild(file);
+      if (document.getElementById(id)){
+        resolve(null);
+      } else {
+        const file = document.createElement("script");
+        file.type = "text/javascript";
+        file.src = src;
+        file.id = id;
+        file.onload = resolve;
+        file.onerror = reject;
+        document.querySelector("head").appendChild(file);  
+      }
     });
   }
 
