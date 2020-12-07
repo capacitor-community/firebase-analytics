@@ -37,27 +37,6 @@ export class FirebaseAnalyticsWeb extends WebPlugin
   }
 
   /**
-   * Configure and Initialize FirebaseApp if not present
-   * @param options - web app's Firebase configuration
-   * @returns firebase analytics object reference
-   * Platform: Web
-   */
-  initializeFirebase(options: FirebaseInitOptions): Promise<any> {
-    return new Promise(async (resolve, reject) => {
-      await this.ready;
-
-      if (!options) {
-        reject(this.options_missing_mssg);
-        return;
-      }
-
-      const app = this.hasFirebaseInitialized() ? window.firebase : window.firebase.initializeApp(options);
-      this.analyticsRef = app.analytics();
-      resolve(this.analyticsRef);
-    });
-  }
-
-  /**
    * Sets the user ID property.
    * @param options - userId: unique identifier of the user to log
    * Platform: Web/Android/iOS
@@ -240,6 +219,32 @@ export class FirebaseAnalyticsWeb extends WebPlugin
 
       this.analyticsRef.setAnalyticsCollectionEnabled(false);
       resolve();
+    });
+  }
+  
+  // 
+  // Note: The methods below are common to all Firebase capacitor plugins. Best to create `capacitor-community / firebase-common`,
+  // move the code there and add it as module to all FB plugins.
+  // 
+
+  /**
+   * Configure and Initialize FirebaseApp if not present
+   * @param options - web app's Firebase configuration
+   * @returns firebase analytics object reference
+   * Platform: Web
+   */
+  initializeFirebase(options: FirebaseInitOptions): Promise<any> {
+    return new Promise(async (resolve, reject) => {
+      await this.ready;
+
+      if (!options) {
+        reject(this.options_missing_mssg);
+        return;
+      }
+
+      const app = this.hasFirebaseInitialized() ? window.firebase : window.firebase.initializeApp(options);
+      this.analyticsRef = app.analytics();
+      resolve(this.analyticsRef);
     });
   }
 
