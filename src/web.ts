@@ -276,7 +276,7 @@ export class FirebaseAnalyticsWeb extends WebPlugin
     var tries = 100;
     return new Promise((resolve, reject) => {
       const interval = setInterval(() => {
-        if (window.firebase) {
+        if (window.firebase?.analytics) {
           clearInterval(interval);
           resolve( null );
         } else if (tries-- <= 0) {
