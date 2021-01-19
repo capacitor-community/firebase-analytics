@@ -19,11 +19,11 @@ export class FirebaseAnalyticsWeb extends WebPlugin
   private scripts = [
     {
       key: "firebase-app",
-      src: "https://www.gstatic.com/firebasejs/7.15.4/firebase-app.js",
+      src: "https://www.gstatic.com/firebasejs/8.2.3/firebase-app.js",
     },
     {
       key: "firebase-ac",
-      src: "https://www.gstatic.com/firebasejs/7.15.4/firebase-analytics.js",
+      src: "https://www.gstatic.com/firebasejs/8.2.3/firebase-analytics.js",
     },
   ];
 
