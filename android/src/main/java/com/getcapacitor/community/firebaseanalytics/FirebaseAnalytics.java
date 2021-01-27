@@ -3,18 +3,20 @@ package com.getcapacitor.community.firebaseanalytics;
 import android.Manifest;
 import android.os.Bundle;
 import com.getcapacitor.JSObject;
-import com.getcapacitor.NativePlugin;
 import com.getcapacitor.Plugin;
 import com.getcapacitor.PluginCall;
 import com.getcapacitor.PluginMethod;
+import com.getcapacitor.annotation.CapacitorPlugin;
+import com.getcapacitor.annotation.Permission;
+
 import java.util.Iterator;
 import org.json.JSONObject;
 
-@NativePlugin(
+@CapacitorPlugin(
   permissions = {
-    Manifest.permission.ACCESS_NETWORK_STATE,
-    Manifest.permission.INTERNET,
-    Manifest.permission.WAKE_LOCK,
+    @Permission(strings = { Manifest.permission.ACCESS_NETWORK_STATE }),
+    @Permission(strings = { Manifest.permission.INTERNET }),
+    @Permission(strings = { Manifest.permission.WAKE_LOCK })
   }
 )
 public class FirebaseAnalytics extends Plugin {
@@ -30,7 +32,7 @@ public class FirebaseAnalytics extends Plugin {
     // Obtain the FirebaseAnalytics instance.
     mFirebaseAnalytics =
       com.google.firebase.analytics.FirebaseAnalytics.getInstance(
-        this.bridge.getActivity()
+        bridge.getActivity()
       );
   }
 
