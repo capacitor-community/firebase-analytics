@@ -68,7 +68,7 @@ export class FirebaseAnalyticsWeb extends WebPlugin
    * @param options - userId: unique identifier of the user to log
    * Platform: Web/Android/iOS
    */
-  setUserId(options: { userId: string }): Promise<void> {
+  setUserId(options: { userId: string | null }): Promise<void> {
     return new Promise(async (resolve, reject) => {
       await this.ready;
 
@@ -77,12 +77,12 @@ export class FirebaseAnalyticsWeb extends WebPlugin
         return;
       }
 
-      const { userId } = options || { userId: undefined };
+      let { userId } = options || { userId: "" };
 
-      if (!userId) {
-        reject("userId property is missing");
-        return;
-      }
+      if (userId == undefined)
+        reject("userId property should be string or null");
+
+      if (userId == null) userId = "";
 
       this.analyticsRef.setUserId(userId);
       resolve();
@@ -104,7 +104,10 @@ export class FirebaseAnalyticsWeb extends WebPlugin
         return;
       }
 
-      const { name, value } = options || { name: undefined, value: undefined };
+      const { name, value } = options || {
+        name: undefined,
+        value: undefined,
+      };
 
       if (!name) {
         reject("name property is missing");

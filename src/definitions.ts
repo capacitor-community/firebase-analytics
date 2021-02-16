@@ -6,7 +6,7 @@ declare module "@capacitor/core" {
 
 export interface FirebaseAnalyticsPlugin {
   initializeFirebase(options: FirebaseInitOptions): Promise<any>;
-  setUserId(options: { userId: string }): Promise<void>;
+  setUserId(options: { userId: string | null }): Promise<void>;
   setUserProperty(options: { name: string; value: string }): Promise<void>;
   getAppInstanceId(): Promise<{ instanceId: string }>;
   setScreenName(options: {
