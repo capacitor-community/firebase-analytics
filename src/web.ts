@@ -4,7 +4,8 @@ import { FirebaseAnalyticsPlugin, FirebaseInitOptions } from "./definitions";
 
 declare var window: any;
 
-export class FirebaseAnalyticsWeb extends WebPlugin
+export class FirebaseAnalyticsWeb
+  extends WebPlugin
   implements FirebaseAnalyticsPlugin {
   private not_supported_mssg = "This method is not supported";
   private options_missing_mssg = "Firebase options are missing";
@@ -289,7 +290,7 @@ export class FirebaseAnalyticsWeb extends WebPlugin
         document.getElementById(scripts[0]) &&
         document.getElementById(scripts[1])
       ) {
-        return resolve();
+        return resolve(null);
       }
 
       await this.loadScript(firebaseAppScript.key, firebaseAppScript.src);
@@ -297,7 +298,7 @@ export class FirebaseAnalyticsWeb extends WebPlugin
         firebaseAnalyticsScript.key,
         firebaseAnalyticsScript.src
       );
-      resolve();
+      resolve(null);
     });
   }
 
@@ -334,10 +335,3 @@ export class FirebaseAnalyticsWeb extends WebPlugin
     return true;
   }
 }
-
-const FirebaseAnalytics = new FirebaseAnalyticsWeb();
-
-export { FirebaseAnalytics };
-
-import { registerWebPlugin } from "@capacitor/core";
-registerWebPlugin(FirebaseAnalytics);
