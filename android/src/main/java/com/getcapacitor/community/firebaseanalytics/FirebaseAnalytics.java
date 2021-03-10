@@ -3,18 +3,26 @@ package com.getcapacitor.community.firebaseanalytics;
 import android.Manifest;
 import android.os.Bundle;
 import com.getcapacitor.JSObject;
-import com.getcapacitor.NativePlugin;
 import com.getcapacitor.Plugin;
 import com.getcapacitor.PluginCall;
 import com.getcapacitor.PluginMethod;
+import com.getcapacitor.annotation.CapacitorPlugin;
+import com.getcapacitor.annotation.Permission;
 import java.util.Iterator;
 import org.json.JSONObject;
 
-@NativePlugin(
+@CapacitorPlugin(
+  name = "FirebaseAnalytics",
   permissions = {
-    Manifest.permission.ACCESS_NETWORK_STATE,
-    Manifest.permission.INTERNET,
-    Manifest.permission.WAKE_LOCK,
+    @Permission(
+      strings = { Manifest.permission.ACCESS_NETWORK_STATE },
+      alias = "network"
+    ),
+    @Permission(strings = { Manifest.permission.INTERNET }, alias = "internet"),
+    @Permission(
+      strings = { Manifest.permission.WAKE_LOCK },
+      alias = "wakelock"
+    ),
   }
 )
 public class FirebaseAnalytics extends Plugin {
@@ -30,7 +38,7 @@ public class FirebaseAnalytics extends Plugin {
     // Obtain the FirebaseAnalytics instance.
     mFirebaseAnalytics =
       com.google.firebase.analytics.FirebaseAnalytics.getInstance(
-        this.bridge.getActivity()
+        bridge.getActivity()
       );
   }
 
@@ -42,19 +50,19 @@ public class FirebaseAnalytics extends Plugin {
   public void setUserId(PluginCall call) {
     try {
       if (mFirebaseAnalytics == null) {
-        call.error(MISSING_REF_MSSG);
+        call.reject(MISSING_REF_MSSG);
         return;
       }
 
       if (!call.hasOption("userId")) {
-        call.error("userId property is missing");
+        call.reject("userId property is missing");
         return;
       }
 
       String userId = call.getString("userId");
       mFirebaseAnalytics.setUserId(userId);
     } catch (Exception ex) {
-      call.error(ex.getLocalizedMessage());
+      call.reject(ex.getLocalizedMessage());
     }
   }
 
@@ -67,17 +75,17 @@ public class FirebaseAnalytics extends Plugin {
   public void setUserProperty(PluginCall call) {
     try {
       if (mFirebaseAnalytics == null) {
-        call.error(MISSING_REF_MSSG);
+        call.reject(MISSING_REF_MSSG);
         return;
       }
 
       if (!call.hasOption("name")) {
-        call.error("name property is missing");
+        call.reject("name property is missing");
         return;
       }
 
       if (!call.hasOption("value")) {
-        call.error("value property is missing");
+        call.reject("value property is missing");
         return;
       }
 
@@ -85,9 +93,9 @@ public class FirebaseAnalytics extends Plugin {
       String value = call.getString("value");
 
       mFirebaseAnalytics.setUserProperty(name, value);
-      call.success();
+      call.resolve();
     } catch (Exception ex) {
-      call.error(ex.getLocalizedMessage());
+      call.reject(ex.getLocalizedMessage());
     }
   }
 
@@ -99,22 +107,22 @@ public class FirebaseAnalytics extends Plugin {
   public void getAppInstanceId(PluginCall call) {
     try {
       if (mFirebaseAnalytics == null) {
-        call.error(MISSING_REF_MSSG);
+        call.reject(MISSING_REF_MSSG);
         return;
       }
 
       String instanceId = mFirebaseAnalytics.getAppInstanceId().toString();
 
       if (instanceId.isEmpty()) {
-        call.error("failed to obtain app instance id");
+        call.reject("failed to obtain app instance id");
         return;
       }
 
       JSObject result = new JSObject();
       result.put("instanceId", instanceId);
-      call.success(result);
+      call.resolve(result);
     } catch (Exception ex) {
-      call.error(ex.getLocalizedMessage());
+      call.reject(ex.getLocalizedMessage());
     }
   }
 
@@ -127,12 +135,12 @@ public class FirebaseAnalytics extends Plugin {
   public void setScreenName(final PluginCall call) {
     try {
       if (mFirebaseAnalytics == null) {
-        call.error(MISSING_REF_MSSG);
+        call.reject(MISSING_REF_MSSG);
         return;
       }
 
       if (!call.hasOption("screenName")) {
-        call.error("screenName property is missing");
+        call.reject("screenName property is missing");
         return;
       }
 
@@ -151,12 +159,12 @@ public class FirebaseAnalytics extends Plugin {
                 screenName,
                 nameOverride
               );
-              call.success();
+              call.resolve();
             }
           }
         );
     } catch (Exception ex) {
-      call.error(ex.getLocalizedMessage());
+      call.reject(ex.getLocalizedMessage());
     }
   }
 
@@ -168,14 +176,14 @@ public class FirebaseAnalytics extends Plugin {
   public void reset(PluginCall call) {
     try {
       if (mFirebaseAnalytics == null) {
-        call.error(MISSING_REF_MSSG);
+        call.reject(MISSING_REF_MSSG);
         return;
       }
 
       mFirebaseAnalytics.resetAnalyticsData();
-      call.success();
+      call.resolve();
     } catch (Exception ex) {
-      call.error(ex.getLocalizedMessage());
+      call.reject(ex.getLocalizedMessage());
     }
   }
 
@@ -188,12 +196,12 @@ public class FirebaseAnalytics extends Plugin {
   public void logEvent(PluginCall call) {
     try {
       if (mFirebaseAnalytics == null) {
-        call.error(MISSING_REF_MSSG);
+        call.reject(MISSING_REF_MSSG);
         return;
       }
 
       if (!call.hasOption("name")) {
-        call.error("name property is missing");
+        call.reject("name property is missing");
         return;
       }
 
@@ -224,9 +232,9 @@ public class FirebaseAnalytics extends Plugin {
       }
 
       mFirebaseAnalytics.logEvent(name, bundle);
-      call.success();
+      call.resolve();
     } catch (Exception ex) {
-      call.error(ex.getLocalizedMessage());
+      call.reject(ex.getLocalizedMessage());
     }
   }
 
@@ -237,14 +245,14 @@ public class FirebaseAnalytics extends Plugin {
   @PluginMethod
   public void setCollectionEnabled(PluginCall call) {
     if (mFirebaseAnalytics == null) {
-      call.error(MISSING_REF_MSSG);
+      call.reject(MISSING_REF_MSSG);
       return;
     }
 
     boolean enabled = call.getBoolean("enabled", false);
 
     mFirebaseAnalytics.setAnalyticsCollectionEnabled(enabled);
-    call.success();
+    call.resolve();
   }
 
   /**
@@ -256,12 +264,12 @@ public class FirebaseAnalytics extends Plugin {
   @PluginMethod
   public void enable(PluginCall call) {
     if (mFirebaseAnalytics == null) {
-      call.error(MISSING_REF_MSSG);
+      call.reject(MISSING_REF_MSSG);
       return;
     }
 
     mFirebaseAnalytics.setAnalyticsCollectionEnabled(true);
-    call.success();
+    call.resolve();
   }
 
   /**
@@ -273,12 +281,12 @@ public class FirebaseAnalytics extends Plugin {
   @PluginMethod
   public void disable(PluginCall call) {
     if (mFirebaseAnalytics == null) {
-      call.error(MISSING_REF_MSSG);
+      call.reject(MISSING_REF_MSSG);
       return;
     }
 
     mFirebaseAnalytics.setAnalyticsCollectionEnabled(false);
-    call.success();
+    call.resolve();
   }
 
   /**
@@ -288,13 +296,13 @@ public class FirebaseAnalytics extends Plugin {
   @PluginMethod
   public void setSessionTimeoutDuration(PluginCall call) {
     if (mFirebaseAnalytics == null) {
-      call.error(MISSING_REF_MSSG);
+      call.reject(MISSING_REF_MSSG);
       return;
     }
 
     int duration = call.getInt("duration", 1800);
 
     mFirebaseAnalytics.setSessionTimeoutDuration(duration);
-    call.success();
+    call.resolve();
   }
 }
