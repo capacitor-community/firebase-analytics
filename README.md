@@ -24,7 +24,7 @@
 | Priyank Patel | [priyankpat](https://github.com/priyankpat) | [@priyankpat\_](https://twitter.com/priyankpat_) |
 | Stewan Silva  | [stewwan](https://github.com/stewwan)       | [@StewanSilva](https://twitter.com/StewanSilva)  |
 
-Maintenance Status: Actively Maintained
+Maintenance Status: Looking for maintainers!
 
 ## Installation
 
@@ -73,6 +73,7 @@ public class MainActivity extends BridgeActivity {
       );
   }
 }
+
 ```
 
 ## Configuration
@@ -108,12 +109,7 @@ git checkout -b firebase-analytics
 ## Usage
 
 ```typescript
-// Must import the package once to make sure the web support initializes
-import "@capacitor-community/firebase-analytics";
-
-import { Plugins } from "@capacitor/core";
-
-const { FirebaseAnalytics } = Plugins;
+import { FirebaseAnalytics } from "@capacitor-community/firebase-analytics";
 
 /**
  * Platform: Web
