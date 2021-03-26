@@ -283,7 +283,7 @@ Download the `google-services.json` file and copy it to `android/app/` directory
 - add `google-services.json` to your `android/app` folder
 - `[extra step]` in android case we need to tell Capacitor to initialise the plugin:
 
-> on your `MainActivity.java` file add `import com.getcapacitor.community.firebaseanalytics.FirebaseAnalytics;` and then inside the init callback `add(AnalyticsPlugin.class);`
+> on your `MainActivity.java` file add `import com.getcapacitor.community.firebaseanalytics.FirebaseAnalytics;` and then inside the init callback `add(FirebaseAnalytics.class);`
 
 Now you should be set to go. Try to run your client using `ionic cap run android --livereload --address=0.0.0.0`.
 
@@ -299,13 +299,41 @@ For existing projects you can upgrade all capacitor related packages (including 
 
 If you were previously using the `capacitor-analytics` package from npm
 
-1. rename dep in package.json from `capacitor-analytics` to `@capacitor-community/firebase-analytics`
-2. on android's _MainActivity.java_ change the import path from `io.stewan.capacitor.analytics.AnalyticsPlugin;` to `com.getcapacitor.community.firebaseanalytics.FirebaseAnalytics;`
-3. public api changes
-   - `instance()` is now `getAppInstanceId()`
-   - `setScreen()` is now `setScreenName()`
-   - `setUserID()` is now `setUserId()`
-   - `setUserProp()` us now `setUserProperty()`
+1. Update NPM package:
+
+    ```bash
+    npm uninstall --save capacitor-analytics
+    npm install --save-prod @capacitor-community/firebase-analytics
+    ```
+
+1. Update the plugin initialization in Android's _MainActivity.java_
+
+    Update the plugin import:
+
+    ```diff
+    -import io.stewan.capacitor.analytics.AnalyticsPlugin;
+    +import com.getcapacitor.community.firebaseanalytics.FirebaseAnalytics;
+    ```
+
+    Update the `init()` call to use the new plugin import:
+
+    ```diff
+    // Initializes the Bridge
+    this.init(savedInstanceState, new ArrayList<Class<? extends Plugin>>() {{
+      // Additional plugins you've installed go here
+      // Ex: add(TotallyAwesomePlugin.class);
+    - add(AnalyticsPlugin.class);
+    + add(FirebaseAnalytics.class);
+    }});
+    ```
+
+1. Public API changes:
+   - `instance()` has been renamed to `getAppInstanceId()`
+   - `setScreen()` has been renamed to `setScreenName()`
+   - `setUserID()` has been renamed to `setUserId()`
+   - `setUserProp()` has been renamed to `setUserProperty()`
+   - `enable()` has been deprecated in favor of `setCollectionEnabled()`
+   - `disable()` has been deprecated in favor of `setCollectionEnabled()`
 
 ## Further info
 
