@@ -116,7 +116,7 @@ public class FirebaseAnalytics: CAPPlugin {
     @available(*, deprecated, renamed: "setCollectionEnabled")
     @objc func enable(_ call: CAPPluginCall) {
         Analytics.setAnalyticsCollectionEnabled(true)
-        call.success()
+        call.resolve()
     }
 
     /// Deprecated - use setCollectionEnabled instead
@@ -125,6 +125,6 @@ public class FirebaseAnalytics: CAPPlugin {
     @available(*, deprecated, renamed: "setCollectionEnabled")
     @objc func disable(_ call: CAPPluginCall) {
         Analytics.setAnalyticsCollectionEnabled(false)
-        call.success()
+        call.resolve()
     }
 }
