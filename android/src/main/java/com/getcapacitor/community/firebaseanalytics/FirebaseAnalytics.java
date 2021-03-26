@@ -53,6 +53,7 @@ public class FirebaseAnalytics extends Plugin {
 
       String userId = call.getString("userId");
       mFirebaseAnalytics.setUserId(userId);
+      call.success();
     } catch (Exception ex) {
       call.error(ex.getLocalizedMessage());
     }

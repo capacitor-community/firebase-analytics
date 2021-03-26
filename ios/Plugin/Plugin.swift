@@ -109,6 +109,7 @@ public class FirebaseAnalytics: CAPPlugin {
         let enabled: Bool = (call.hasOption("enabled") ? call.getBool("enabled") : false)!
         
         Analytics.setAnalyticsCollectionEnabled(enabled)
+        call.success()
     }
     
     
@@ -118,6 +119,7 @@ public class FirebaseAnalytics: CAPPlugin {
         let duration = call.getInt("duration") ?? 1800
         
         Analytics.setSessionTimeoutInterval(TimeInterval(duration))
+        call.success()
     }
 
     /// Deprecated - use setCollectionEnabled instead
