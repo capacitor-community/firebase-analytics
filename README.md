@@ -145,7 +145,7 @@ FirebaseAnalytics.setUserId({
 /**
  * Platform: Web/Android/iOS
  * Sets a user property to a given value.
- * @param userId - unique identifier of a user
+ * @param options - property name and value to set
  * @returns void
  * https://firebase.google.com/docs/analytics/user-properties
  */
