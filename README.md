@@ -1,6 +1,6 @@
 <p align="center"><br><img src="https://user-images.githubusercontent.com/236501/85893648-1c92e880-b7a8-11ea-926d-95355b8175c7.png" width="128" height="128" /></p>
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-2-orange.svg?style=flat-square)](#contributors-)
+[![All Contributors](https://img.shields.io/badge/all_contributors-3-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 <h3 align="center">Firebase Analytics</h3>
 <p align="center"><strong><code>@capacitor-community/firebase-analytics</code></strong></p>
@@ -356,6 +356,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
   <tr>
     <td align="center"><a href="https://github.com/brownoxford"><img src="https://avatars.githubusercontent.com/u/755209?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Chris Abernethy</b></sub></a><br /><a href="#maintenance-brownoxford" title="Maintenance">🚧</a></td>
     <td align="center"><a href="http://priyankpatel.io"><img src="https://avatars.githubusercontent.com/u/5585797?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Priyank Patel</b></sub></a><br /><a href="https://github.com/capacitor-community/firebase-analytics/commits?author=priyankpat" title="Code">💻</a></td>
+    <td align="center"><a href="http://github.com/stewones"><img src="https://avatars.githubusercontent.com/u/19799027?v=4?s=100" width="100px;" alt=""/><br /><sub><b>stewwan</b></sub></a><br /><a href="https://github.com/capacitor-community/firebase-analytics/commits?author=stewwan" title="Code">💻</a></td>
   </tr>
 </table>
 
