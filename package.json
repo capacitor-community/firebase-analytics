@@ -12,7 +12,7 @@
     "prepublishOnly": "npm run build",
     "npm-publish": "np"
   },
-  "author": "Priyank Patel <priyank.patel@stackspace.ca>",
+  "author": "mesur.io <oss@mesur.io>",
   "license": "MIT",
   "dependencies": {
     "@capacitor/core": "latest"
