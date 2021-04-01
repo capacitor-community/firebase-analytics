@@ -6,7 +6,7 @@
 </p>
 
 <p align="center">
-  <img src="https://img.shields.io/maintenance/yes/2020?style=flat-square" />
+  <img src="https://img.shields.io/maintenance/yes/2021?style=flat-square" />
   <a href="https://github.com/capacitor-community/firebase-analytics/actions?query=workflow%3A%22Test+and+Build+Plugin%22"><img src="https://img.shields.io/github/workflow/status/capacitor-community/firebase-analytics/Test%20and%20Build%20Plugin?style=flat-square" /></a>
   <a href="https://www.npmjs.com/package/@capacitor-community/firebase-analytics"><img src="https://img.shields.io/npm/l/@capacitor-community/firebase-analytics?style=flat-square" /></a>
 <br>
@@ -19,12 +19,9 @@
 
 ## Maintainers
 
-| Maintainer    | GitHub                                      | Social                                           |
-| ------------- | ------------------------------------------- | ------------------------------------------------ |
-| Priyank Patel | [priyankpat](https://github.com/priyankpat) | [@priyankpat\_](https://twitter.com/priyankpat_) |
-| Stewan Silva  | [stewwan](https://github.com/stewwan)       | [@StewanSilva](https://twitter.com/StewanSilva)  |
-
-Maintenance Status: Actively Maintained
+| Maintainer | GitHub                                  | Social                                    |
+| ---------- | --------------------------------------- | ----------------------------------------- |
+| mesur.io   | [mesur-io](https://github.com/mesur-io) | [@mesur_io](https://twitter.com/mesur_io) |
 
 ## Installation
 
@@ -63,7 +60,6 @@ public class MainActivity extends BridgeActivity {
     this.init(
         savedInstanceState,
         new ArrayList<Class<? extends Plugin>>() {
-
           {
             // Additional plugins you've installed go here
             // Ex: add(TotallyAwesomePlugin.class);
@@ -73,6 +69,7 @@ public class MainActivity extends BridgeActivity {
       );
   }
 }
+
 ```
 
 ## Configuration
@@ -305,31 +302,31 @@ If you were previously using the `capacitor-analytics` package from npm
 
 1. Update NPM package:
 
-    ```bash
-    npm uninstall --save capacitor-analytics
-    npm install --save-prod @capacitor-community/firebase-analytics
-    ```
+   ```bash
+   npm uninstall --save capacitor-analytics
+   npm install --save-prod @capacitor-community/firebase-analytics
+   ```
 
 1. Update the plugin initialization in Android's _MainActivity.java_
 
-    Update the plugin import:
+   Update the plugin import:
 
-    ```diff
-    -import io.stewan.capacitor.analytics.AnalyticsPlugin;
-    +import com.getcapacitor.community.firebaseanalytics.FirebaseAnalytics;
-    ```
+   ```diff
+   -import io.stewan.capacitor.analytics.AnalyticsPlugin;
+   +import com.getcapacitor.community.firebaseanalytics.FirebaseAnalytics;
+   ```
 
-    Update the `init()` call to use the new plugin import:
+   Update the `init()` call to use the new plugin import:
 
-    ```diff
-    // Initializes the Bridge
-    this.init(savedInstanceState, new ArrayList<Class<? extends Plugin>>() {{
-      // Additional plugins you've installed go here
-      // Ex: add(TotallyAwesomePlugin.class);
-    - add(AnalyticsPlugin.class);
-    + add(FirebaseAnalytics.class);
-    }});
-    ```
+   ```diff
+   // Initializes the Bridge
+   this.init(savedInstanceState, new ArrayList<Class<? extends Plugin>>() {{
+     // Additional plugins you've installed go here
+     // Ex: add(TotallyAwesomePlugin.class);
+   - add(AnalyticsPlugin.class);
+   + add(FirebaseAnalytics.class);
+   }});
+   ```
 
 1. Public API changes:
    - `instance()` has been renamed to `getAppInstanceId()`
