@@ -1,0 +1,30 @@
+on:
+  push:
+    branches: [master]
+  pull_request:
+    branches: [master]
+  workflow_dispatch:
+name: Swift Unit Tests
+jobs:
+  test:
+    name: Test
+    runs-on: macos-latest
+    strategy:
+      matrix:
+        destination:
+          - "platform=iOS Simulator,OS=14.4,name=iPhone 8"
+    steps:
+      - name: Checkout
+        uses: actions/checkout@master
+      - name: Install NPM modules
+        run: npm install
+      - name: Install Cocoapods
+        run: |
+          cd ios
+          pod install
+      - name: Build and test
+        run: |
+          cd ios
+          xcodebuild clean test -workspace Plugin.xcworkspace -scheme Plugin -destination "${destination}"
+        env:
+          destination: ${{ matrix.destination }}
