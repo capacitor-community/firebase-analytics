@@ -1,0 +1,25 @@
+on:
+  push:
+    branches: [master]
+  pull_request:
+    branches: [master]
+  workflow_dispatch:
+name: Swift Unit Tests
+jobs:
+  test:
+    name: Test
+    runs-on: macos-latest
+    strategy:
+      matrix:
+        destination:
+          - "platform=iOS Simulator,OS=12.2,name=iPhone X"
+    steps:
+      - name: Checkout
+        uses: actions/checkout@master
+      - name: Build and test
+        run: |
+          cd Texstyle
+          xcodebuild clean test -workspace Plugin.xcworkspace -scheme Plugin -destination "${destination}"
+          bash <(curl -s https://codecov.io/bash)
+        env:
+          destination: ${{ matrix.destination }}
