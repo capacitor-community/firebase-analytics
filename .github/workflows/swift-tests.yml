@@ -18,7 +18,6 @@ jobs:
         uses: actions/checkout@master
       - name: Build and test
         run: |
-          cd Texstyle
           xcodebuild clean test -workspace Plugin.xcworkspace -scheme Plugin -destination "${destination}"
           bash <(curl -s https://codecov.io/bash)
         env:
