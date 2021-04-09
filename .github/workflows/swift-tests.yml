@@ -17,13 +17,17 @@ jobs:
       - name: Checkout
         uses: actions/checkout@master
       - name: Install NPM modules
-        run: npm install
+        run: |
+          npm list --depth=0
+          npm install
+          npm list --depth=0
       - name: Install Cocoapods
         run: |
           cd ios
           pod install
       - name: Build and test
         run: |
+          cd ios
           xcodebuild clean test -workspace Plugin.xcworkspace -scheme Plugin -destination "${destination}"
           bash <(curl -s https://codecov.io/bash)
         env:
