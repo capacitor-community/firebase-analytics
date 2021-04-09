@@ -17,10 +17,9 @@ jobs:
       - name: Checkout
         uses: actions/checkout@master
       - name: Install NPM modules
-        run: |
-          npm list --depth=0
-          npm install
-          npm list --depth=0
+        run: npm install
+      - name: List NPM modules
+        run: npm list --depth=0
       - name: Install Cocoapods
         run: |
           cd ios
