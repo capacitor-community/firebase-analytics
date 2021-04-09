@@ -13,6 +13,12 @@ public class FirebaseAnalytics: CAPPlugin {
         }
     }
 
+    @objc func echo(_ call: CAPPluginCall) {
+        let value = call.getString("value") ?? ""
+        call.success([
+            "value": value
+        ])
+    }
 
     /// Sets the user ID property.
     /// - Parameter call: userId - unique identifier of the user to log
