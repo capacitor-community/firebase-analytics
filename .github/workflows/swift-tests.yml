@@ -26,6 +26,5 @@ jobs:
         run: |
           cd ios
           xcodebuild clean test -workspace Plugin.xcworkspace -scheme Plugin -destination "${destination}"
-          bash <(curl -s https://codecov.io/bash)
         env:
           destination: ${{ matrix.destination }}
