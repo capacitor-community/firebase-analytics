@@ -41,6 +41,15 @@
         "test",
         "bug"
       ]
+    },
+    {
+      "login": "mRoca",
+      "name": "Michel Roca",
+      "avatar_url": "https://avatars.githubusercontent.com/u/4746261?v=4",
+      "profile": "https://github.com/mRoca",
+      "contributions": [
+        "bug"
+      ]
     }
   ],
   "contributorsPerLine": 7,
