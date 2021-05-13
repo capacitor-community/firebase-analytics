@@ -148,9 +148,18 @@ public class FirebaseAnalytics extends Plugin {
             @Override
             public void run() {
               Bundle bundle = new Bundle();
-              bundle.putString(FirebaseAnalytics.Param.SCREEN_NAME, screenName);
-              bundle.putString(FirebaseAnalytics.Param.SCREEN_CLASS, nameOverride);
-              mFirebaseAnalytics.logEvent(FirebaseAnalytics.Event.SCREEN_VIEW, bundle);
+              bundle.putString(
+                com.google.firebase.analytics.FirebaseAnalytics.Param.SCREEN_NAME,
+                screenName
+              );
+              bundle.putString(
+                com.google.firebase.analytics.FirebaseAnalytics.Param.SCREEN_CLASS,
+                nameOverride
+              );
+              mFirebaseAnalytics.logEvent(
+                com.google.firebase.analytics.FirebaseAnalytics.Event.SCREEN_VIEW,
+                bundle
+              );
               call.success();
             }
           }
