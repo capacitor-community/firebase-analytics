@@ -28,3 +28,18 @@ jobs:
           xcodebuild clean test -workspace Plugin.xcworkspace -scheme Plugin -destination "${destination}"
         env:
           destination: ${{ matrix.destination }}
+
+  android:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+      - uses: actions/setup-node@v1
+        with:
+          node-version: 12
+          registry-url: https://registry.npmjs.org/
+      - uses: actions/setup-java@v1
+        with:
+          java-version: 1.8
+      - run: npm i
+      - run: npm run build
+      - run: cd ./android && ./gradlew test --stacktrace
