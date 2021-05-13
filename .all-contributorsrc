@@ -31,6 +31,16 @@
       "contributions": [
         "code"
       ]
+    },
+    {
+      "login": "karm435",
+      "name": "Karmjit Singh",
+      "avatar_url": "https://avatars.githubusercontent.com/u/6672354?v=4",
+      "profile": "https://www.codewithkarma.com/",
+      "contributions": [
+        "test",
+        "bug"
+      ]
     }
   ],
   "contributorsPerLine": 7,
