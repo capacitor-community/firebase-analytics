@@ -98,25 +98,29 @@ public class FirebaseAnalytics extends Plugin {
    */
   @PluginMethod
   public void getAppInstanceId(PluginCall call) {
-    try {
-      if (mFirebaseAnalytics == null) {
-        call.error(MISSING_REF_MSSG);
-        return;
-      }
-
-      String instanceId = mFirebaseAnalytics.getAppInstanceId().toString();
-
-      if (instanceId.isEmpty()) {
-        call.error("failed to obtain app instance id");
-        return;
-      }
-
-      JSObject result = new JSObject();
-      result.put("instanceId", instanceId);
-      call.success(result);
-    } catch (Exception ex) {
-      call.error(ex.getLocalizedMessage());
+    if (mFirebaseAnalytics == null) {
+      call.error(MISSING_REF_MSSG);
+      return;
     }
+    Task<String> task = mFirebaseAnalytics.getAppInstanceId();
+    task.addOnCompleteListener(new OnCompleteListener<String>() {
+        @Override
+        public void onComplete(@NonNull Task<String> task) {
+            if (task.isSuccessful()) {
+              String instanceId = task.getResult()
+              if (instanceId.isEmpty()) {
+                call.error("failed to obtain app instance id");
+              } else {
+                JSObject result = new JSObject();
+                result.put("instanceId", string);
+                call.success(result);
+              }
+            } else {
+                Exception exception = task.getException();
+                call.error(exception.getLocalizedMessage())
+            }
+        }
+    });
   }
 
   /**
