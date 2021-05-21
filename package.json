@@ -10,16 +10,17 @@
     "clean": "rimraf ./dist",
     "watch": "tsc --watch",
     "prepublishOnly": "npm run build",
-    "npm-publish": "np"
+    "release": "np",
+    "test": "echo \"No test specified\""
   },
-  "author": "Priyank Patel <priyank.patel@stackspace.ca>",
+  "author": "mesur.io <oss@mesur.io>",
   "license": "MIT",
   "dependencies": {
-    "@capacitor/core": "^3.0.0-rc.0"
+    "@capacitor/core": "^3.0.0"
   },
   "devDependencies": {
-    "@capacitor/android": "^3.0.0-rc.0",
-    "@capacitor/ios": "^3.0.0-rc.0",
+    "@capacitor/android": "^3.0.0",
+    "@capacitor/ios": "^3.0.0",
     "husky": "^4.2.5",
     "np": "^7.4.0",
     "prettier": "^2.2.1",

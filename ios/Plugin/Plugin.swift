@@ -12,6 +12,12 @@ public class FirebaseAnalytics: CAPPlugin {
         }
     }
 
+    @objc func echo(_ call: CAPPluginCall) {
+        let value = call.getString("value") ?? ""
+        call.resolve([
+            "value": value
+        ])
+    }
 
     /// Sets the user ID property.
     /// - Parameter call: userId - unique identifier of the user to log
@@ -23,7 +29,6 @@ public class FirebaseAnalytics: CAPPlugin {
             call.reject("userId property is missing")
         }
     }
-
 
     /// Sets a user property to a given value.
     /// - Parameter call: name - The name of the user property to set.
@@ -41,7 +46,6 @@ public class FirebaseAnalytics: CAPPlugin {
         }
     }
 
-
     /// Retrieves the app instance id from the service.
     /// - Parameter call: instanceId - current instance if of the app
     @objc func getAppInstanceId(_ call: CAPPluginCall) {
@@ -51,7 +55,6 @@ public class FirebaseAnalytics: CAPPlugin {
         ])
     }
 
-
     /// Sets the current screen name, which specifies the current visual context in your app.
     /// - Parameter call: screenName - the activity to which the screen name and class name apply.
     ///                   nameOverride - the name of the current screen. Set to null to clear the current screen name.
@@ -59,7 +62,9 @@ public class FirebaseAnalytics: CAPPlugin {
         if let screenName = call.getString("screenName") {
             let nameOverride = call.getString("nameOverride") ?? nil
             DispatchQueue.main.async {
-                Analytics.setScreenName(screenName, screenClass: nameOverride)
+                Analytics.logEvent(AnalyticsEventScreenView,
+                    parameters: [AnalyticsParameterScreenName: screenName,
+                                AnalyticsParameterScreenClass: nameOverride])
             }
             call.resolve()
         } else {
@@ -79,13 +84,38 @@ public class FirebaseAnalytics: CAPPlugin {
     /// - Parameter call: name - unique name of the event
     ///                   params - the map of event parameters.
     @objc func logEvent(_ call: CAPPluginCall) {
-        if let name = call.getString("name") {
-            let params = call.getObject("params") ?? nil
-            Analytics.logEvent(name, parameters: params)
-            call.resolve()
-        } else {
-            call.reject("name property is missing")
+
+        /// Name is a required argument to logEvent()
+        guard let name = call.getString("name"), !name.isEmpty else {
+            call.reject("Event name is required and can't be empty")
+            return
         }
+
+        /// logEvent() expects `nil` when there are no parameters
+        guard var params = call.getObject("params"), !params.isEmpty else {
+            Analytics.logEvent(name, parameters: nil)
+            call.resolve()
+            return
+        }
+
+        /// FirebaseAnalytics silently converts any item quantity that is not an
+        /// integer to zero, this includes any NSNumber or string value passed
+        /// as an option to CAPPluginCall.
+        if var items = params["items"] as? NSArray as? [[String:Any]] {
+            for (idx, item) in items.enumerated() {
+                if let quantity = item["quantity"] {
+                    guard let intVal = quantity as? Int else {
+                        call.reject("Item quantity must be specified as an integer value")
+                        return
+                    }
+                    items[idx]["quantity"] = intVal
+                }
+            }
+            params["items"] = items
+        }
+
+        Analytics.logEvent(name, parameters: params)
+        call.resolve()
     }
 
 

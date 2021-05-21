@@ -1,0 +1,61 @@
+{
+  "files": [
+    "README.md"
+  ],
+  "imageSize": 100,
+  "commit": false,
+  "contributors": [
+    {
+      "login": "brownoxford",
+      "name": "Chris Abernethy",
+      "avatar_url": "https://avatars.githubusercontent.com/u/755209?v=4",
+      "profile": "https://github.com/brownoxford",
+      "contributions": [
+        "maintenance"
+      ]
+    },
+    {
+      "login": "priyankpat",
+      "name": "Priyank Patel",
+      "avatar_url": "https://avatars.githubusercontent.com/u/5585797?v=4",
+      "profile": "http://priyankpatel.io",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "stewwan",
+      "name": "stewwan",
+      "avatar_url": "https://avatars.githubusercontent.com/u/19799027?v=4",
+      "profile": "http://github.com/stewones",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "karm435",
+      "name": "Karmjit Singh",
+      "avatar_url": "https://avatars.githubusercontent.com/u/6672354?v=4",
+      "profile": "https://www.codewithkarma.com/",
+      "contributions": [
+        "test",
+        "bug"
+      ]
+    },
+    {
+      "login": "mRoca",
+      "name": "Michel Roca",
+      "avatar_url": "https://avatars.githubusercontent.com/u/4746261?v=4",
+      "profile": "https://github.com/mRoca",
+      "contributions": [
+        "bug"
+      ]
+    }
+  ],
+  "contributorsPerLine": 7,
+  "projectName": "firebase-analytics",
+  "projectOwner": "capacitor-community",
+  "repoType": "github",
+  "repoHost": "https://github.com",
+  "skipCi": true
+}

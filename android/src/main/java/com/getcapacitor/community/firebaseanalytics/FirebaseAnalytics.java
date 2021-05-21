@@ -155,10 +155,18 @@ public class FirebaseAnalytics extends Plugin {
 
             @Override
             public void run() {
-              mFirebaseAnalytics.setCurrentScreen(
-                bridge.getActivity(),
-                screenName,
+              Bundle bundle = new Bundle();
+              bundle.putString(
+                com.google.firebase.analytics.FirebaseAnalytics.Param.SCREEN_NAME,
+                screenName
+              );
+              bundle.putString(
+                com.google.firebase.analytics.FirebaseAnalytics.Param.SCREEN_CLASS,
                 nameOverride
+              );
+              mFirebaseAnalytics.logEvent(
+                com.google.firebase.analytics.FirebaseAnalytics.Event.SCREEN_VIEW,
+                bundle
               );
               call.resolve();
             }
