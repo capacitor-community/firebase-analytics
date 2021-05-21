@@ -50,6 +50,15 @@
       "contributions": [
         "bug"
       ]
+    },
+    {
+      "login": "tobium",
+      "name": "Tobi",
+      "avatar_url": "https://avatars.githubusercontent.com/u/2484805?v=4",
+      "profile": "http://www.ultramixer.com",
+      "contributions": [
+        "code"
+      ]
     }
   ],
   "contributorsPerLine": 7,
