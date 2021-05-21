@@ -21,7 +21,7 @@ jobs:
         with:
           node-version: "12"
       - name: Install NPM Dependencies
-        run: npm install
+        run: npm ci
       - name: Build NPM Module
         run: npm run build
       - name: Install Cocoapods
@@ -47,7 +47,7 @@ jobs:
           distribution: "zulu"
           java-version: "8"
       - name: Install NPM Dependencies
-        run: npm install
+        run: npm ci
       - name: Build NPM Module
         run: npm run build
       - name: Run Android Tests
