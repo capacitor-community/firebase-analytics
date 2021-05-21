@@ -68,6 +68,15 @@
       "contributions": [
         "code"
       ]
+    },
+    {
+      "login": "salohcin714",
+      "name": "Nicholas Norris",
+      "avatar_url": "https://avatars.githubusercontent.com/u/41271531?v=4",
+      "profile": "https://github.com/salohcin714",
+      "contributions": [
+        "bug"
+      ]
     }
   ],
   "contributorsPerLine": 7,
