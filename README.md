@@ -6,25 +6,22 @@
 </p>
 
 <p align="center">
-  <img src="https://img.shields.io/maintenance/yes/2020?style=flat-square" />
-  <a href="https://github.com/capacitor-community/firebase-analytics/actions?query=workflow%3A%22Test+and+Build+Plugin%22"><img src="https://img.shields.io/github/workflow/status/capacitor-community/firebase-analytics/Test%20and%20Build%20Plugin?style=flat-square" /></a>
+  <img src="https://img.shields.io/maintenance/yes/2021?style=flat-square" />
+  <a href="https://github.com/capacitor-community/firebase-analytics/actions?query=workflow%3A%22Plugin+Unit+Tests%22"><img src="https://img.shields.io/github/workflow/status/capacitor-community/firebase-analytics/Test%20and%20Build%20Plugin?style=flat-square" /></a>
   <a href="https://www.npmjs.com/package/@capacitor-community/firebase-analytics"><img src="https://img.shields.io/npm/l/@capacitor-community/firebase-analytics?style=flat-square" /></a>
 <br>
   <a href="https://www.npmjs.com/package/@capacitor-community/firebase-analytics"><img src="https://img.shields.io/npm/dw/@capacitor-community/firebase-analytics?style=flat-square" /></a>
   <a href="https://www.npmjs.com/package/@capacitor-community/firebase-analytics"><img src="https://img.shields.io/npm/v/@capacitor-community/firebase-analytics?style=flat-square" /></a>
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-<a href="#contributors-"><img src="https://img.shields.io/badge/all%20contributors-3-orange?style=flat-square" /></a>
+<a href="#contributors-"><img src="https://img.shields.io/badge/all%20contributors-5-orange?style=flat-square" /></a>
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 </p>
 
 ## Maintainers
 
-| Maintainer    | GitHub                                      | Social                                           |
-| ------------- | ------------------------------------------- | ------------------------------------------------ |
-| Priyank Patel | [priyankpat](https://github.com/priyankpat) | [@priyankpat\_](https://twitter.com/priyankpat_) |
-| Stewan Silva  | [stewwan](https://github.com/stewwan)       | [@StewanSilva](https://twitter.com/StewanSilva)  |
-
-Maintenance Status: Looking for maintainers!
+| Maintainer | GitHub                                  | Social                                    |
+| ---------- | --------------------------------------- | ----------------------------------------- |
+| mesur.io   | [mesur-io](https://github.com/mesur-io) | [@mesur_io](https://twitter.com/mesur_io) |
 
 ## Installation
 
@@ -73,7 +70,6 @@ public class MainActivity extends BridgeActivity {
       );
   }
 }
-
 ```
 
 ## Configuration
@@ -141,7 +137,7 @@ FirebaseAnalytics.setUserId({
 /**
  * Platform: Web/Android/iOS
  * Sets a user property to a given value.
- * @param userId - unique identifier of a user
+ * @param options - property name and value to set
  * @returns void
  * https://firebase.google.com/docs/analytics/user-properties
  */
@@ -301,31 +297,31 @@ If you were previously using the `capacitor-analytics` package from npm
 
 1. Update NPM package:
 
-    ```bash
-    npm uninstall --save capacitor-analytics
-    npm install --save-prod @capacitor-community/firebase-analytics
-    ```
+   ```bash
+   npm uninstall --save capacitor-analytics
+   npm install --save-prod @capacitor-community/firebase-analytics
+   ```
 
 1. Update the plugin initialization in Android's _MainActivity.java_
 
-    Update the plugin import:
+   Update the plugin import:
 
-    ```diff
-    -import io.stewan.capacitor.analytics.AnalyticsPlugin;
-    +import com.getcapacitor.community.firebaseanalytics.FirebaseAnalytics;
-    ```
+   ```diff
+   -import io.stewan.capacitor.analytics.AnalyticsPlugin;
+   +import com.getcapacitor.community.firebaseanalytics.FirebaseAnalytics;
+   ```
 
-    Update the `init()` call to use the new plugin import:
+   Update the `init()` call to use the new plugin import:
 
-    ```diff
-    // Initializes the Bridge
-    this.init(savedInstanceState, new ArrayList<Class<? extends Plugin>>() {{
-      // Additional plugins you've installed go here
-      // Ex: add(TotallyAwesomePlugin.class);
-    - add(AnalyticsPlugin.class);
-    + add(FirebaseAnalytics.class);
-    }});
-    ```
+   ```diff
+   // Initializes the Bridge
+   this.init(savedInstanceState, new ArrayList<Class<? extends Plugin>>() {{
+     // Additional plugins you've installed go here
+     // Ex: add(TotallyAwesomePlugin.class);
+   - add(AnalyticsPlugin.class);
+   + add(FirebaseAnalytics.class);
+   }});
+   ```
 
 1. Public API changes:
    - `instance()` has been renamed to `getAppInstanceId()`
@@ -340,3 +336,27 @@ If you were previously using the `capacitor-analytics` package from npm
 - [Android](https://firebase.google.com/docs/android/setup)
 - [iOS](https://firebase.google.com/docs/analytics/get-started?platform=ios)
 - [Web](https://firebase.google.com/docs/analytics/get-started?platform=web)
+
+## Contributors ✨
+
+Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/docs/en/emoji-key)):
+
+<!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
+<!-- prettier-ignore-start -->
+<!-- markdownlint-disable -->
+<table>
+  <tr>
+    <td align="center"><a href="https://github.com/brownoxford"><img src="https://avatars.githubusercontent.com/u/755209?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Chris Abernethy</b></sub></a><br /><a href="#maintenance-brownoxford" title="Maintenance">🚧</a></td>
+    <td align="center"><a href="http://priyankpatel.io"><img src="https://avatars.githubusercontent.com/u/5585797?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Priyank Patel</b></sub></a><br /><a href="https://github.com/capacitor-community/firebase-analytics/commits?author=priyankpat" title="Code">💻</a></td>
+    <td align="center"><a href="http://github.com/stewones"><img src="https://avatars.githubusercontent.com/u/19799027?v=4?s=100" width="100px;" alt=""/><br /><sub><b>stewwan</b></sub></a><br /><a href="https://github.com/capacitor-community/firebase-analytics/commits?author=stewwan" title="Code">💻</a></td>
+    <td align="center"><a href="https://www.codewithkarma.com/"><img src="https://avatars.githubusercontent.com/u/6672354?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Karmjit Singh</b></sub></a><br /><a href="https://github.com/capacitor-community/firebase-analytics/commits?author=karm435" title="Tests">⚠️</a> <a href="https://github.com/capacitor-community/firebase-analytics/issues?q=author%3Akarm435" title="Bug reports">🐛</a></td>
+    <td align="center"><a href="https://github.com/mRoca"><img src="https://avatars.githubusercontent.com/u/4746261?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Michel Roca</b></sub></a><br /><a href="https://github.com/capacitor-community/firebase-analytics/issues?q=author%3AmRoca" title="Bug reports">🐛</a></td>
+  </tr>
+</table>
+
+<!-- markdownlint-restore -->
+<!-- prettier-ignore-end -->
+
+<!-- ALL-CONTRIBUTORS-LIST:END -->
+
+This project follows the [all-contributors](https://github.com/all-contributors/all-contributors) specification. Contributions of any kind welcome!
