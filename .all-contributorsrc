@@ -87,6 +87,16 @@
         "bug",
         "code"
       ]
+    },
+    {
+      "login": "ptmkenny",
+      "name": "ptmkenny",
+      "avatar_url": "https://avatars.githubusercontent.com/u/1451472?v=4",
+      "profile": "https://github.com/ptmkenny",
+      "contributions": [
+        "bug",
+        "code"
+      ]
     }
   ],
   "contributorsPerLine": 7,
