@@ -24,7 +24,7 @@ export interface FirebaseAnalyticsPlugin {
 export interface FirebaseInitOptions {
   apiKey: string;
   authDomain: string;
-  databaseURL: string;
+  databaseURL?: string;
   projectId: string;
   storageBucket: string;
   messagingSenderId: string;
