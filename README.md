@@ -99,8 +99,8 @@ git checkout -b firebase-analytics
 | logEvent                  | ✅      | ✅  | ✅  |
 | setCollectionEnabled      | ✅      | ✅  | ✅  |
 | setSessionTimeoutDuration | ✅      | ✅  | ✅  |
-| enable                    | ✅      | ✅  | ❌  |
-| disable                   | ✅      | ✅  | ❌  |
+| enable                    | ✅      | ✅  | ✅  |
+| disable                   | ✅      | ✅  | ✅  |
 
 ## Usage
 
