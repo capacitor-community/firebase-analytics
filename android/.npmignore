@@ -1,1 +1,3 @@
-/build
+.gradle
+build
+local.properties
