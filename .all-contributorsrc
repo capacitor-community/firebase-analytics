@@ -98,6 +98,15 @@
         "code",
         "doc"
       ]
+    },
+    {
+      "login": "vkyeswa",
+      "name": "vkyeswa",
+      "avatar_url": "https://avatars.githubusercontent.com/u/5016129?v=4",
+      "profile": "https://github.com/vkyeswa",
+      "contributions": [
+        "bug"
+      ]
     }
   ],
   "contributorsPerLine": 7,
