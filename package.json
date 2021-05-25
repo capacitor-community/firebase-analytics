@@ -3,10 +3,12 @@
   "version": "1.0.0-alpha.5",
   "description": "A native plugin for firebase analytics.",
   "homepage": "https://github.com/capacitor-community/firebase-analytics",
-  "main": "dist/esm/index.js",
+  "main": "dist/plugin.cjs.js",
+  "module": "dist/esm/index.js",
   "types": "dist/esm/index.d.ts",
+  "unpkg": "dist/plugin.js",
   "scripts": {
-    "build": "npm run clean && tsc",
+    "build": "npm run clean && tsc && rollup -c rollup.config.js",
     "clean": "rimraf ./dist",
     "watch": "tsc --watch",
     "prepublishOnly": "npm run build",
@@ -27,6 +29,7 @@
     "prettier-plugin-java": "^0.8.0",
     "pretty-quick": "^3.1.0",
     "rimraf": "^3.0.2",
+    "rollup": "^2.29.0",
     "typescript": "^4.2.3"
   },
   "husky": {
