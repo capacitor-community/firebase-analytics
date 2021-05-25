@@ -8,7 +8,6 @@ export class FirebaseAnalyticsWeb extends WebPlugin
   implements FirebaseAnalyticsPlugin {
   private not_supported_mssg = "This method is not supported";
   private options_missing_mssg = "Firebase options are missing";
-  private duplicate_app_mssg = "Firebase app already exists";
   private analytics_missing_mssg =
     "Firebase analytics is not initialized. Make sure initializeFirebase() is called once";
 
@@ -32,35 +31,9 @@ export class FirebaseAnalyticsWeb extends WebPlugin
       name: "FirebaseAnalytics",
       platforms: ["web"],
     });
-
+    
     this.ready = new Promise((resolve) => (this.readyResolver = resolve));
-    this.configure();
-  }
-
-  /**
-   * Configure and Initialize FirebaseApp if not present
-   * @param options - web app's Firebase configuration
-   * @returns firebase analytics object reference
-   * Platform: Web
-   */
-  initializeFirebase(options: FirebaseInitOptions): Promise<any> {
-    return new Promise(async (resolve, reject) => {
-      await this.ready;
-
-      if (this.hasFirebaseInitialized()) {
-        reject(this.duplicate_app_mssg);
-        return;
-      }
-
-      if (!options) {
-        reject(this.options_missing_mssg);
-        return;
-      }
-
-      const app = window.firebase.initializeApp(options);
-      this.analyticsRef = app.analytics();
-      resolve(this.analyticsRef);
-    });
+    this.loadScripts();
   }
 
   /**
@@ -248,57 +221,34 @@ export class FirebaseAnalyticsWeb extends WebPlugin
       resolve();
     });
   }
+  
+  // 
+  // Note: The methods below are common to all Firebase capacitor plugins. Best to create `capacitor-community / firebase-common`,
+  // move the code there and add it as module to all FB plugins.
+  // 
 
   /**
-   * Ready resolver to check and load firebase analytics
+   * Configure and Initialize FirebaseApp if not present
+   * @param options - web app's Firebase configuration
+   * @returns firebase analytics object reference
+   * Platform: Web
    */
-  private async configure() {
-    try {
-      await this.loadScripts();
+  async initializeFirebase(options: FirebaseInitOptions): Promise<any> {
+    if (!options) 
+      throw new Error(this.options_missing_mssg);
 
-      if (
-        window.firebase &&
-        window.firebase.analytics &&
-        this.hasFirebaseInitialized()
-      ) {
-        this.analyticsRef = window.firebase.analytics();
-      }
-    } catch (error) {
-      throw error;
-    }
-
-    const interval = setInterval(() => {
-      if (!window.firebase) {
-        return;
-      }
-      clearInterval(interval);
-      this.readyResolver();
-    }, 50);
+    await this.firebaseObjectReadyPromise();
+    const app = this.isFirebaseInitialized() ? window.firebase : window.firebase.initializeApp(options);
+    this.analyticsRef = app.analytics();
+    this.readyResolver();
+    return this.analyticsRef;
   }
 
   /**
    * Check for existing loaded script and load new scripts
    */
-  private loadScripts() {
-    const firebaseAppScript = this.scripts[0];
-    const firebaseAnalyticsScript = this.scripts[1];
-
-    return new Promise(async (resolve, _reject) => {
-      const scripts = this.scripts.map((script) => script.key);
-      if (
-        document.getElementById(scripts[0]) &&
-        document.getElementById(scripts[1])
-      ) {
-        return resolve();
-      }
-
-      await this.loadScript(firebaseAppScript.key, firebaseAppScript.src);
-      await this.loadScript(
-        firebaseAnalyticsScript.key,
-        firebaseAnalyticsScript.src
-      );
-      resolve();
-    });
+  private loadScripts(): Promise<Array<any>> {
+    return Promise.all( this.scripts.map( s => this.loadScript(s.key, s.src) ) );
   }
 
   /**
@@ -308,30 +258,37 @@ export class FirebaseAnalyticsWeb extends WebPlugin
    */
   private loadScript(id: string, src: string): Promise<any> {
     return new Promise((resolve, reject) => {
-      const file = document.createElement("script");
-      file.type = "text/javascript";
-      file.src = src;
-      file.id = id;
-      file.onload = resolve;
-      file.onerror = reject;
-      document.querySelector("head").appendChild(file);
+      if (document.getElementById(id)){
+        resolve(null);
+      } else {
+        const file = document.createElement("script");
+        file.type = "text/javascript";
+        file.src = src;
+        file.id = id;
+        file.onload = resolve;
+        file.onerror = reject;
+        document.querySelector("head").appendChild(file);  
+      }
     });
   }
 
-  /**
-   * Returns true/false if firebase object reference exists inside window
-   */
-  private hasFirebaseInitialized() {
-    if (!window.firebase) {
-      return false;
-    }
+  private firebaseObjectReadyPromise(): Promise<void> {
+    var tries = 100;
+    return new Promise((resolve, reject) => {
+      const interval = setInterval(() => {
+        if (window.firebase?.analytics) {
+          clearInterval(interval);
+          resolve( null );
+        } else if (tries-- <= 0) {
+          reject("Firebase fails to load");
+        }
+      }, 50);
+    } );
+  }
 
-    const firebaseApps = window.firebase.apps;
-    if (firebaseApps && firebaseApps.length === 0) {
-      return false;
-    }
-
-    return true;
+  private isFirebaseInitialized() {
+    const length = window.firebase?.apps?.length;
+    return length && length > 0;
   }
 }
 
