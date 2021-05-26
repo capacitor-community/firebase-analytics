@@ -13,7 +13,7 @@
   <a href="https://www.npmjs.com/package/@capacitor-community/firebase-analytics"><img src="https://img.shields.io/npm/dw/@capacitor-community/firebase-analytics?style=flat-square" /></a>
   <a href="https://www.npmjs.com/package/@capacitor-community/firebase-analytics"><img src="https://img.shields.io/npm/v/@capacitor-community/firebase-analytics?style=flat-square" /></a>
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-<a href="#contributors-"><img src="https://img.shields.io/badge/all%20contributors-5-orange?style=flat-square" /></a>
+<a href="#contributors-"><img src="https://img.shields.io/badge/all%20contributors-11-orange?style=flat-square" /></a>
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 </p>
 
@@ -99,8 +99,8 @@ git checkout -b firebase-analytics
 | logEvent                  | ✅      | ✅  | ✅  |
 | setCollectionEnabled      | ✅      | ✅  | ✅  |
 | setSessionTimeoutDuration | ✅      | ✅  | ✅  |
-| enable                    | ✅      | ✅  | ❌  |
-| disable                   | ✅      | ✅  | ❌  |
+| enable                    | ✅      | ✅  | ✅  |
+| disable                   | ✅      | ✅  | ✅  |
 
 ## Usage
 
@@ -351,6 +351,14 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
     <td align="center"><a href="http://github.com/stewones"><img src="https://avatars.githubusercontent.com/u/19799027?v=4?s=100" width="100px;" alt=""/><br /><sub><b>stewwan</b></sub></a><br /><a href="https://github.com/capacitor-community/firebase-analytics/commits?author=stewwan" title="Code">💻</a></td>
     <td align="center"><a href="https://www.codewithkarma.com/"><img src="https://avatars.githubusercontent.com/u/6672354?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Karmjit Singh</b></sub></a><br /><a href="https://github.com/capacitor-community/firebase-analytics/commits?author=karm435" title="Tests">⚠️</a> <a href="https://github.com/capacitor-community/firebase-analytics/issues?q=author%3Akarm435" title="Bug reports">🐛</a></td>
     <td align="center"><a href="https://github.com/mRoca"><img src="https://avatars.githubusercontent.com/u/4746261?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Michel Roca</b></sub></a><br /><a href="https://github.com/capacitor-community/firebase-analytics/issues?q=author%3AmRoca" title="Bug reports">🐛</a></td>
+    <td align="center"><a href="http://www.ultramixer.com"><img src="https://avatars.githubusercontent.com/u/1584274?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Matthias</b></sub></a><br /><a href="https://github.com/capacitor-community/firebase-analytics/pulls?q=is%3Apr+reviewed-by%3Aslajar" title="Reviewed Pull Requests">👀</a></td>
+    <td align="center"><a href="http://www.ultramixer.com"><img src="https://avatars.githubusercontent.com/u/2484805?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Tobi</b></sub></a><br /><a href="https://github.com/capacitor-community/firebase-analytics/commits?author=tobium" title="Code">💻</a></td>
+  </tr>
+  <tr>
+    <td align="center"><a href="https://github.com/salohcin714"><img src="https://avatars.githubusercontent.com/u/41271531?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Nicholas Norris</b></sub></a><br /><a href="https://github.com/capacitor-community/firebase-analytics/issues?q=author%3Asalohcin714" title="Bug reports">🐛</a></td>
+    <td align="center"><a href="https://github.com/gabrielscarvalho"><img src="https://avatars.githubusercontent.com/u/1574205?v=4?s=100" width="100px;" alt=""/><br /><sub><b>gabrielscarvalho</b></sub></a><br /><a href="https://github.com/capacitor-community/firebase-analytics/issues?q=author%3Agabrielscarvalho" title="Bug reports">🐛</a> <a href="https://github.com/capacitor-community/firebase-analytics/commits?author=gabrielscarvalho" title="Code">💻</a></td>
+    <td align="center"><a href="https://github.com/ptmkenny"><img src="https://avatars.githubusercontent.com/u/1451472?v=4?s=100" width="100px;" alt=""/><br /><sub><b>ptmkenny</b></sub></a><br /><a href="https://github.com/capacitor-community/firebase-analytics/issues?q=author%3Aptmkenny" title="Bug reports">🐛</a> <a href="https://github.com/capacitor-community/firebase-analytics/commits?author=ptmkenny" title="Code">💻</a> <a href="https://github.com/capacitor-community/firebase-analytics/commits?author=ptmkenny" title="Documentation">📖</a></td>
+    <td align="center"><a href="https://github.com/vkyeswa"><img src="https://avatars.githubusercontent.com/u/5016129?v=4?s=100" width="100px;" alt=""/><br /><sub><b>vkyeswa</b></sub></a><br /><a href="https://github.com/capacitor-community/firebase-analytics/issues?q=author%3Avkyeswa" title="Bug reports">🐛</a></td>
   </tr>
 </table>
 

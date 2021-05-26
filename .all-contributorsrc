@@ -50,6 +50,63 @@
       "contributions": [
         "bug"
       ]
+    },
+    {
+      "login": "slajar",
+      "name": "Matthias",
+      "avatar_url": "https://avatars.githubusercontent.com/u/1584274?v=4",
+      "profile": "http://www.ultramixer.com",
+      "contributions": [
+        "review"
+      ]
+    },
+    {
+      "login": "tobium",
+      "name": "Tobi",
+      "avatar_url": "https://avatars.githubusercontent.com/u/2484805?v=4",
+      "profile": "http://www.ultramixer.com",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "salohcin714",
+      "name": "Nicholas Norris",
+      "avatar_url": "https://avatars.githubusercontent.com/u/41271531?v=4",
+      "profile": "https://github.com/salohcin714",
+      "contributions": [
+        "bug"
+      ]
+    },
+    {
+      "login": "gabrielscarvalho",
+      "name": "gabrielscarvalho",
+      "avatar_url": "https://avatars.githubusercontent.com/u/1574205?v=4",
+      "profile": "https://github.com/gabrielscarvalho",
+      "contributions": [
+        "bug",
+        "code"
+      ]
+    },
+    {
+      "login": "ptmkenny",
+      "name": "ptmkenny",
+      "avatar_url": "https://avatars.githubusercontent.com/u/1451472?v=4",
+      "profile": "https://github.com/ptmkenny",
+      "contributions": [
+        "bug",
+        "code",
+        "doc"
+      ]
+    },
+    {
+      "login": "vkyeswa",
+      "name": "vkyeswa",
+      "avatar_url": "https://avatars.githubusercontent.com/u/5016129?v=4",
+      "profile": "https://github.com/vkyeswa",
+      "contributions": [
+        "bug"
+      ]
     }
   ],
   "contributorsPerLine": 7,
