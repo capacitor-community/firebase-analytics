@@ -28,13 +28,21 @@
 Using npm:
 
 ```bash
-npm install @capacitor-community/firebase-analytics
+# Capacitor v3
+npm install @capacitor-community/firebase-analytics@latest
+
+# Capacitor v2
+npm install @capacitor-community/firebase-analytics@capacitor2-lts
 ```
 
 Using yarn:
 
 ```bash
-yarn add @capacitor-community/firebase-analytics
+# Capacitor v3
+yarn add @capacitor-community/firebase-analytics@latest
+
+# Capacitor v2
+yarn add @capacitor-community/firebase-analytics@capacitor2-lts
 ```
 
 Sync native files:
