@@ -70,6 +70,7 @@ public class MainActivity extends BridgeActivity {
       );
   }
 }
+
 ```
 
 ## Configuration
@@ -95,7 +96,7 @@ git checkout -b firebase-analytics
 | setUserProperty           | ✅      | ✅  | ✅  |
 | getAppInstanceId          | ✅      | ✅  | ❌  |
 | setScreenName             | ✅      | ✅  | ❌  |
-| reset                     | ✅      | ✅  | ✅  |
+| reset                     | ✅      | ✅  | ❌  |
 | logEvent                  | ✅      | ✅  | ✅  |
 | setCollectionEnabled      | ✅      | ✅  | ✅  |
 | setSessionTimeoutDuration | ✅      | ✅  | ✅  |
