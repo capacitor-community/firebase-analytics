@@ -1,9 +1,3 @@
-declare module "@capacitor/core" {
-  interface PluginRegistry {
-    FirebaseAnalytics: FirebaseAnalyticsPlugin;
-  }
-}
-
 export interface FirebaseAnalyticsPlugin {
   initializeFirebase(options: FirebaseInitOptions): Promise<any>;
   setUserId(options: { userId: string }): Promise<void>;
