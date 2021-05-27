@@ -36,11 +36,9 @@
     "release": "np",
     "test": "echo \"No test specified\""
   },
-  "dependencies": {
-    "@capacitor/core": "^3.0.0"
-  },
   "devDependencies": {
     "@capacitor/android": "^3.0.0",
+    "@capacitor/core": "^3.0.0",
     "@capacitor/ios": "^3.0.0",
     "husky": "^4.2.5",
     "np": "^7.4.0",
@@ -50,6 +48,9 @@
     "rimraf": "^3.0.2",
     "rollup": "^2.29.0",
     "typescript": "^4.2.3"
+  },
+  "peerDependencies": {
+    "@capacitor/core": "^3.0.0"
   },
   "husky": {
     "hooks": {
