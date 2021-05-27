@@ -29,6 +29,7 @@
     "native"
   ],
   "scripts": {
+    "eslint": "eslint . --ext ts",
     "build": "npm run clean && tsc && rollup -c rollup.config.js",
     "clean": "rimraf ./dist",
     "watch": "tsc --watch",
@@ -40,6 +41,8 @@
     "@capacitor/android": "^3.0.0",
     "@capacitor/core": "^3.0.0",
     "@capacitor/ios": "^3.0.0",
+    "@ionic/eslint-config": "^0.3.0",
+    "eslint": "^7.27.0",
     "husky": "^4.2.5",
     "np": "^7.4.0",
     "prettier": "^2.3.0",
@@ -51,6 +54,9 @@
   },
   "peerDependencies": {
     "@capacitor/core": "^3.0.0"
+  },
+  "eslintConfig": {
+    "extends": "@ionic/eslint-config/recommended"
   },
   "husky": {
     "hooks": {
