@@ -6,7 +6,8 @@ declare var window: any;
 
 export class FirebaseAnalyticsWeb
   extends WebPlugin
-  implements FirebaseAnalyticsPlugin {
+  implements FirebaseAnalyticsPlugin
+{
   private not_supported_mssg = "This method is not supported";
   private options_missing_mssg = "Firebase options are missing";
   private duplicate_app_mssg = "Firebase app already exists";
@@ -14,7 +15,7 @@ export class FirebaseAnalyticsWeb
     "Firebase analytics is not initialized. Make sure initializeFirebase() is called once";
 
   public readonly ready: Promise<any>;
-  private readyResolver: Function;
+  private readyResolver!: Function;
   private analyticsRef: any;
 
   private scripts = [
@@ -311,7 +312,7 @@ export class FirebaseAnalyticsWeb
       file.id = id;
       file.onload = resolve;
       file.onerror = reject;
-      document.querySelector("head").appendChild(file);
+      document.querySelector("head")?.appendChild(file);
     });
   }
 
