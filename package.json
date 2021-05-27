@@ -7,6 +7,27 @@
   "module": "dist/esm/index.js",
   "types": "dist/esm/index.d.ts",
   "unpkg": "dist/plugin.js",
+  "files": [
+    "android/src/main/",
+    "android/build.gradle",
+    "dist/",
+    "ios/Plugin/",
+    "CapacitorCommunityFirebaseAnalytics.podspec"
+  ],
+  "author": "mesur.io <oss@mesur.io>",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/capacitor-community/firebase-analytics"
+  },
+  "bugs": {
+    "url": "https://github.com/capacitor-community/firebase-analytics/issues"
+  },
+  "keywords": [
+    "capacitor",
+    "plugin",
+    "native"
+  ],
   "scripts": {
     "build": "npm run clean && tsc && rollup -c rollup.config.js",
     "clean": "rimraf ./dist",
@@ -15,8 +36,6 @@
     "release": "np",
     "test": "echo \"No test specified\""
   },
-  "author": "mesur.io <oss@mesur.io>",
-  "license": "MIT",
   "dependencies": {
     "@capacitor/core": "^3.0.0"
   },
@@ -37,18 +56,6 @@
       "pre-commit": "pretty-quick --staged"
     }
   },
-  "files": [
-    "android/src/main/",
-    "android/build.gradle",
-    "dist/",
-    "ios/Plugin/",
-    "CapacitorCommunityFirebaseAnalytics.podspec"
-  ],
-  "keywords": [
-    "capacitor",
-    "plugin",
-    "native"
-  ],
   "capacitor": {
     "ios": {
       "src": "ios"
@@ -56,12 +63,5 @@
     "android": {
       "src": "android"
     }
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/capacitor-community/firebase-analytics"
-  },
-  "bugs": {
-    "url": "https://github.com/capacitor-community/firebase-analytics/issues"
   }
 }
