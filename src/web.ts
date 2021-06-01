@@ -44,24 +44,20 @@ export class FirebaseAnalyticsWeb
    * @returns firebase analytics object reference
    * Platform: Web
    */
-  initializeFirebase(options: FirebaseInitOptions): Promise<any> {
-    return new Promise(async (resolve, reject) => {
-      await this.ready;
+  async initializeFirebase(options: FirebaseInitOptions): Promise<any> {
+    await this.ready;
 
-      if (this.hasFirebaseInitialized()) {
-        reject(this.duplicate_app_mssg);
-        return;
-      }
+    if (this.hasFirebaseInitialized()) {
+      return Promise.reject(this.duplicate_app_mssg);
+    }
 
-      if (!options) {
-        reject(this.options_missing_mssg);
-        return;
-      }
+    if (!options) {
+      return Promise.reject(this.options_missing_mssg);
+    }
 
-      const app = window.firebase.initializeApp(options);
-      this.analyticsRef = app.analytics();
-      resolve(this.analyticsRef);
-    });
+    const app = window.firebase.initializeApp(options);
+    this.analyticsRef = app.analytics();
+    return Promise.resolve(this.analyticsRef);
   }
 
   /**
@@ -69,25 +65,21 @@ export class FirebaseAnalyticsWeb
    * @param options - userId: unique identifier of the user to log
    * Platform: Web/Android/iOS
    */
-  setUserId(options: { userId: string }): Promise<void> {
-    return new Promise(async (resolve, reject) => {
-      await this.ready;
+  async setUserId(options: { userId: string }): Promise<void> {
+    await this.ready;
 
-      if (!this.analyticsRef) {
-        reject(this.analytics_missing_mssg);
-        return;
-      }
+    if (!this.analyticsRef) {
+      return Promise.reject(this.analytics_missing_mssg);
+    }
 
-      const { userId } = options || { userId: undefined };
+    const { userId } = options || { userId: undefined };
 
-      if (!userId) {
-        reject("userId property is missing");
-        return;
-      }
+    if (!userId) {
+      return Promise.reject("userId property is missing");
+    }
 
-      this.analyticsRef.setUserId(userId);
-      resolve();
-    });
+    this.analyticsRef.setUserId(userId);
+    return Promise.resolve();
   }
 
   /**
@@ -96,32 +88,30 @@ export class FirebaseAnalyticsWeb
    *                  value: The value of the user property.
    * Platform: Web/Android/iOS
    */
-  setUserProperty(options: { name: string; value: string }): Promise<void> {
-    return new Promise(async (resolve, reject) => {
-      await this.ready;
+  async setUserProperty(options: {
+    name: string;
+    value: string;
+  }): Promise<void> {
+    await this.ready;
 
-      if (!this.analyticsRef) {
-        reject(this.analytics_missing_mssg);
-        return;
-      }
+    if (!this.analyticsRef) {
+      return Promise.reject(this.analytics_missing_mssg);
+    }
 
-      const { name, value } = options || { name: undefined, value: undefined };
+    const { name, value } = options || { name: undefined, value: undefined };
 
-      if (!name) {
-        reject("name property is missing");
-        return;
-      }
+    if (!name) {
+      return Promise.reject("name property is missing");
+    }
 
-      if (!value) {
-        reject("value property is missing");
-        return;
-      }
+    if (!value) {
+      return Promise.reject("value property is missing");
+    }
 
-      let property: any = {};
-      property[name] = value;
-      this.analyticsRef.setUserProperties(property);
-      resolve();
-    });
+    let property: any = {};
+    property[name] = value;
+    this.analyticsRef.setUserProperties(property);
+    return Promise.resolve();
   }
 
   /**
@@ -160,28 +150,24 @@ export class FirebaseAnalyticsWeb
    *                  params: the map of event parameters.
    * Platform: Web/Android/iOS
    */
-  logEvent(options: { name: string; params: object }): Promise<void> {
-    return new Promise(async (resolve, reject) => {
-      await this.ready;
+  async logEvent(options: { name: string; params: object }): Promise<void> {
+    await this.ready;
 
-      if (!this.analyticsRef) {
-        reject(this.analytics_missing_mssg);
-        return;
-      }
+    if (!this.analyticsRef) {
+      return Promise.reject(this.analytics_missing_mssg);
+    }
 
-      const { name, params } = options || {
-        name: undefined,
-        params: undefined,
-      };
+    const { name, params } = options || {
+      name: undefined,
+      params: undefined,
+    };
 
-      if (!name) {
-        reject("name property is missing");
-        return;
-      }
+    if (!name) {
+      return Promise.reject("name property is missing");
+    }
 
-      this.analyticsRef.logEvent(name, params);
-      resolve();
-    });
+    this.analyticsRef.logEvent(name, params);
+    return Promise.resolve();
   }
 
   /**
@@ -189,19 +175,16 @@ export class FirebaseAnalyticsWeb
    * @param options - enabled: boolean true/false to enable/disable logging
    * Platform: Web/Android/iOS
    */
-  setCollectionEnabled(options: { enabled: boolean }): Promise<void> {
-    return new Promise(async (resolve, reject) => {
-      await this.ready;
+  async setCollectionEnabled(options: { enabled: boolean }): Promise<void> {
+    await this.ready;
 
-      if (!this.analyticsRef) {
-        reject(this.analytics_missing_mssg);
-        return;
-      }
+    if (!this.analyticsRef) {
+      return Promise.reject(this.analytics_missing_mssg);
+    }
 
-      const { enabled } = options || { enabled: false };
-      this.analyticsRef.setAnalyticsCollectionEnabled(enabled);
-      resolve();
-    });
+    const { enabled } = options || { enabled: false };
+    this.analyticsRef.setAnalyticsCollectionEnabled(enabled);
+    return Promise.resolve();
   }
 
   /**
@@ -222,32 +205,26 @@ export class FirebaseAnalyticsWeb
     return this.analyticsRef;
   }
 
-  enable(): Promise<void> {
-    return new Promise(async (resolve, reject) => {
-      await this.ready;
+  async enable(): Promise<void> {
+    await this.ready;
 
-      if (!this.analyticsRef) {
-        reject(this.analytics_missing_mssg);
-        return;
-      }
+    if (!this.analyticsRef) {
+      return Promise.reject(this.analytics_missing_mssg);
+    }
 
-      this.analyticsRef.setAnalyticsCollectionEnabled(true);
-      resolve();
-    });
+    this.analyticsRef.setAnalyticsCollectionEnabled(true);
+    return Promise.resolve();
   }
 
-  disable(): Promise<void> {
-    return new Promise(async (resolve, reject) => {
-      await this.ready;
+  async disable(): Promise<void> {
+    await this.ready;
 
-      if (!this.analyticsRef) {
-        reject(this.analytics_missing_mssg);
-        return;
-      }
+    if (!this.analyticsRef) {
+      return Promise.reject(this.analytics_missing_mssg);
+    }
 
-      this.analyticsRef.setAnalyticsCollectionEnabled(false);
-      resolve();
-    });
+    this.analyticsRef.setAnalyticsCollectionEnabled(false);
+    return Promise.resolve();
   }
 
   /**
@@ -280,26 +257,24 @@ export class FirebaseAnalyticsWeb
   /**
    * Check for existing loaded script and load new scripts
    */
-  private loadScripts() {
+  private async loadScripts() {
     const firebaseAppScript = this.scripts[0];
     const firebaseAnalyticsScript = this.scripts[1];
 
-    return new Promise(async (resolve, _reject) => {
-      const scripts = this.scripts.map((script) => script.key);
-      if (
-        document.getElementById(scripts[0]) &&
-        document.getElementById(scripts[1])
-      ) {
-        return resolve(null);
-      }
+    const scripts = this.scripts.map((script) => script.key);
+    if (
+      document.getElementById(scripts[0]) &&
+      document.getElementById(scripts[1])
+    ) {
+      return Promise.resolve();
+    }
 
-      await this.loadScript(firebaseAppScript.key, firebaseAppScript.src);
-      await this.loadScript(
-        firebaseAnalyticsScript.key,
-        firebaseAnalyticsScript.src
-      );
-      resolve(null);
-    });
+    await this.loadScript(firebaseAppScript.key, firebaseAppScript.src);
+    await this.loadScript(
+      firebaseAnalyticsScript.key,
+      firebaseAnalyticsScript.src
+    );
+    return Promise.resolve();
   }
 
   /**
