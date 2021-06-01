@@ -235,11 +235,7 @@ export class FirebaseAnalyticsWeb
   private async configure() {
     await this.loadScripts();
 
-    if (
-      window.firebase &&
-      window.firebase.analytics &&
-      this.hasFirebaseInitialized()
-    ) {
+    if (window.firebase?.analytics && this.hasFirebaseInitialized()) {
       this.analyticsRef = window.firebase.analytics();
     }
 
