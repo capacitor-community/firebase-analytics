@@ -203,7 +203,7 @@ export class FirebaseAnalyticsWeb
   /**
    * Returns analytics reference object
    */
-  get remoteConfig() {
+  get remoteConfig(): any {
     return this.analyticsRef;
   }
 
