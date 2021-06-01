@@ -5,7 +5,7 @@ import type {
   FirebaseInitOptions,
 } from "./definitions";
 
-declare var window: any;
+declare const window: any;
 
 export class FirebaseAnalyticsWeb
   extends WebPlugin
