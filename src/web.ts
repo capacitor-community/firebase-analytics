@@ -120,7 +120,7 @@ export class FirebaseAnalyticsWeb
    * Platform: Web/Android/iOS
    */
   getAppInstanceId(): Promise<{ instanceId: string }> {
-    return new Promise((resolve, _reject) => resolve);
+    return new Promise((resolve) => resolve);
   }
 
   /**
@@ -129,11 +129,12 @@ export class FirebaseAnalyticsWeb
    *                  nameOverride: the name of the current screen. Set to null to clear the current screen name.
    * Platform: Android/iOS
    */
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   setScreenName(_options: {
     screenName: string;
     nameOverride: string;
   }): Promise<void> {
-    return new Promise((resolve, _reject) => resolve);
+    return Promise.resolve();
   }
 
   /**
@@ -141,7 +142,7 @@ export class FirebaseAnalyticsWeb
    * Platform: Android/iOS
    */
   reset(): Promise<void> {
-    return new Promise((resolve, _reject) => resolve);
+    return Promise.resolve();
   }
 
   /**
@@ -192,6 +193,7 @@ export class FirebaseAnalyticsWeb
    * @param options - duration: duration of inactivity
    * Platform: Android/iOS
    */
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   setSessionTimeoutDuration(_options: { duration: number }): Promise<void> {
     return new Promise((_resolve, reject) => {
       reject(this.not_supported_mssg);
