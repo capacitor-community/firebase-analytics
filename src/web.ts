@@ -233,18 +233,14 @@ export class FirebaseAnalyticsWeb
    * Ready resolver to check and load firebase analytics
    */
   private async configure() {
-    try {
-      await this.loadScripts();
+    await this.loadScripts();
 
-      if (
-        window.firebase &&
-        window.firebase.analytics &&
-        this.hasFirebaseInitialized()
-      ) {
-        this.analyticsRef = window.firebase.analytics();
-      }
-    } catch (error) {
-      throw error;
+    if (
+      window.firebase &&
+      window.firebase.analytics &&
+      this.hasFirebaseInitialized()
+    ) {
+      this.analyticsRef = window.firebase.analytics();
     }
 
     const interval = setInterval(() => {
