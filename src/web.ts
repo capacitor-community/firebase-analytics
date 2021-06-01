@@ -18,7 +18,7 @@ export class FirebaseAnalyticsWeb
     "Firebase analytics is not initialized. Make sure initializeFirebase() is called once";
 
   public readonly ready: Promise<any>;
-  private readyResolver!: Function;
+  private readyResolver!: (value: void | PromiseLike<void>) => void;
   private analyticsRef: any;
 
   private scripts = [
@@ -34,7 +34,7 @@ export class FirebaseAnalyticsWeb
 
   constructor() {
     super();
-    this.ready = new Promise((resolve) => (this.readyResolver = resolve));
+    this.ready = new Promise<void>((resolve) => (this.readyResolver = resolve));
     this.configure();
   }
 
@@ -151,6 +151,7 @@ export class FirebaseAnalyticsWeb
    *                  params: the map of event parameters.
    * Platform: Web/Android/iOS
    */
+  // eslint-disable-next-line @typescript-eslint/ban-types
   async logEvent(options: { name: string; params: object }): Promise<void> {
     await this.ready;
 

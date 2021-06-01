@@ -8,6 +8,7 @@ export interface FirebaseAnalyticsPlugin {
     nameOverride?: string;
   }): Promise<void>;
   reset(): Promise<void>;
+  // eslint-disable-next-line @typescript-eslint/ban-types
   logEvent(options: { name: string; params: object }): Promise<void>;
   setCollectionEnabled(options: { enabled: boolean }): Promise<void>;
   setSessionTimeoutDuration(options: { duration: number }): Promise<void>;
