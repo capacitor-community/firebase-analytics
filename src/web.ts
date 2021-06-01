@@ -1,6 +1,9 @@
 import { WebPlugin } from "@capacitor/core";
 
-import { FirebaseAnalyticsPlugin, FirebaseInitOptions } from "./definitions";
+import type {
+  FirebaseAnalyticsPlugin,
+  FirebaseInitOptions,
+} from "./definitions";
 
 declare var window: any;
 
