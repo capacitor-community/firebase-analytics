@@ -108,7 +108,7 @@ export class FirebaseAnalyticsWeb
       return Promise.reject("value property is missing");
     }
 
-    let property: any = {};
+    const property: any = {};
     property[name] = value;
     this.analyticsRef.setUserProperties(property);
     return Promise.resolve();
