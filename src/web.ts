@@ -106,19 +106,6 @@ export class FirebaseAnalyticsWeb extends WebPlugin
   }
 
   /**
-   * Sets the current screen name, which specifies the current visual context in your app.
-   * @param options - screenName: the activity to which the screen name and class name apply.
-   *                  nameOverride: the name of the current screen. Set to null to clear the current screen name.
-   * Platform: Android/iOS
-   */
-  setScreenName(_options: {
-    screenName: string;
-    nameOverride: string;
-  }): Promise<void> {
-    return new Promise((resolve, _reject) => resolve);
-  }
-
-  /**
    * Clears all analytics data for this app from the device and resets the app instance id.
    * Platform: Android/iOS
    */

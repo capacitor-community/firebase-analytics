@@ -97,7 +97,6 @@ git checkout -b firebase-analytics
 | setUserId                 | ✅      | ✅  | ✅  |
 | setUserProperty           | ✅      | ✅  | ✅  |
 | getAppInstanceId          | ✅      | ✅  | ❌  |
-| setScreenName             | ✅      | ✅  | ❌  |
 | reset                     | ✅      | ✅  | ✅  |
 | logEvent                  | ✅      | ✅  | ✅  |
 | setCollectionEnabled      | ✅      | ✅  | ✅  |
@@ -162,19 +161,6 @@ FirebaseAnalytics.setUserProperty({
  * https://firebase.google.com/docs/analytics/user-properties
  */
 FirebaseAnalytics.getAppInstanceId();
-
-/**
- * Platform: Android/iOS
- * Sets the current screen name, which specifies the current visual context in your app.
- * @param screenName - name of the current screen to track
- *        nameOverride - name of the screen class to override
- * @returns instanceId - individual instance id value
- * https://firebase.google.com/docs/analytics/screenviews
- */
-FirebaseAnalytics.setScreenName({
-  screenName: "login",
-  nameOverride: "LoginScreen",
-});
 
 /**
  * Platform: Web/Android/iOS
@@ -307,7 +293,7 @@ If you were previously using the `capacitor-analytics` package from npm
 2. on android's _MainActivity.java_ change the import path from `io.stewan.capacitor.analytics.AnalyticsPlugin;` to `com.getcapacitor.community.firebaseanalytics.FirebaseAnalytics;`
 3. public api changes
    - `instance()` is now `getAppInstanceId()`
-   - `setScreen()` is now `setScreenName()`
+   - `setScreenName()` removed, see https://firebase.googleblog.com/2020/08/google-analytics-manual-screen-view.html
    - `setUserID()` is now `setUserId()`
    - `setUserProp()` us now `setUserProperty()`
 

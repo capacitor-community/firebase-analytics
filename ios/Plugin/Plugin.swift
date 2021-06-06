@@ -58,26 +58,7 @@ public class FirebaseAnalytics: CAPPlugin {
             "instanceId": instanceId
         ])
     }
-    
-    
-    /// Sets the current screen name, which specifies the current visual context in your app.
-    /// - Parameter call: screenName - the activity to which the screen name and class name apply.
-    ///                   nameOverride - the name of the current screen. Set to null to clear the current screen name.
-    @objc func setScreenName(_ call: CAPPluginCall) {
-        if !call.hasOption("screenName") {
-            call.error("screenName property is missing")
-            return
-        }
         
-        let screenName = call.getString("screenName")
-        let nameOverride = call.getString("nameOverride") ?? nil
-        
-        DispatchQueue.main.async {
-            Analytics.setScreenName(screenName, screenClass: nameOverride)
-        }
-        call.success()
-    }
-    
     
     /// Clears all analytics data for this app from the device and resets the app instance id.
     @objc func reset(_ call: CAPPluginCall) {
