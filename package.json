@@ -1,6 +1,6 @@
 {
   "name": "@capacitor-community/firebase-analytics",
-  "version": "0.2.0",
+  "version": "0.3.3",
   "description": "A native plugin for firebase analytics.",
   "homepage": "https://github.com/capacitor-community/firebase-analytics",
   "main": "dist/esm/index.js",
@@ -15,11 +15,11 @@
   "author": "Priyank Patel <priyank.patel@stackspace.ca>",
   "license": "MIT",
   "dependencies": {
-    "@capacitor/core": "latest"
+    "@capacitor/core": "^2.4.7"
   },
   "devDependencies": {
-    "@capacitor/android": "latest",
-    "@capacitor/ios": "latest",
+    "@capacitor/android": "^2.4.7",
+    "@capacitor/ios": "^2.4.7",
     "husky": "^4.2.5",
     "np": "^6.2.4",
     "prettier": "^2.0.5",
