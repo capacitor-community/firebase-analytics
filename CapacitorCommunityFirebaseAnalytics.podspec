@@ -12,8 +12,5 @@ Pod::Spec.new do |s|
     s.ios.deployment_target  = '12.0'
     s.static_framework = true
     s.dependency 'Capacitor'
-    s.dependency 'Firebase'
-    # s.dependency 'FirebaseCore'
-    s.dependency 'Firebase/Core'
-    s.dependency 'Firebase/Analytics'
+    s.dependency 'Firebase/Analytics', '~> 8.0'
   end
