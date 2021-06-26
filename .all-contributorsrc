@@ -107,6 +107,16 @@
       "contributions": [
         "bug"
       ]
+    },
+    {
+      "login": "losciur",
+      "name": "losciur",
+      "avatar_url": "https://avatars.githubusercontent.com/u/62714342?v=4",
+      "profile": "https://github.com/losciur",
+      "contributions": [
+        "test",
+        "bug"
+      ]
     }
   ],
   "contributorsPerLine": 7,
