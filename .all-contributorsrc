@@ -1,0 +1,128 @@
+{
+  "files": [
+    "README.md"
+  ],
+  "imageSize": 100,
+  "commit": false,
+  "contributors": [
+    {
+      "login": "brownoxford",
+      "name": "Chris Abernethy",
+      "avatar_url": "https://avatars.githubusercontent.com/u/755209?v=4",
+      "profile": "https://github.com/brownoxford",
+      "contributions": [
+        "maintenance"
+      ]
+    },
+    {
+      "login": "priyankpat",
+      "name": "Priyank Patel",
+      "avatar_url": "https://avatars.githubusercontent.com/u/5585797?v=4",
+      "profile": "http://priyankpatel.io",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "stewwan",
+      "name": "stewwan",
+      "avatar_url": "https://avatars.githubusercontent.com/u/19799027?v=4",
+      "profile": "http://github.com/stewones",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "karm435",
+      "name": "Karmjit Singh",
+      "avatar_url": "https://avatars.githubusercontent.com/u/6672354?v=4",
+      "profile": "https://www.codewithkarma.com/",
+      "contributions": [
+        "test",
+        "bug"
+      ]
+    },
+    {
+      "login": "mRoca",
+      "name": "Michel Roca",
+      "avatar_url": "https://avatars.githubusercontent.com/u/4746261?v=4",
+      "profile": "https://github.com/mRoca",
+      "contributions": [
+        "bug"
+      ]
+    },
+    {
+      "login": "slajar",
+      "name": "Matthias",
+      "avatar_url": "https://avatars.githubusercontent.com/u/1584274?v=4",
+      "profile": "http://www.ultramixer.com",
+      "contributions": [
+        "review"
+      ]
+    },
+    {
+      "login": "tobium",
+      "name": "Tobi",
+      "avatar_url": "https://avatars.githubusercontent.com/u/2484805?v=4",
+      "profile": "http://www.ultramixer.com",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "salohcin714",
+      "name": "Nicholas Norris",
+      "avatar_url": "https://avatars.githubusercontent.com/u/41271531?v=4",
+      "profile": "https://github.com/salohcin714",
+      "contributions": [
+        "bug"
+      ]
+    },
+    {
+      "login": "gabrielscarvalho",
+      "name": "gabrielscarvalho",
+      "avatar_url": "https://avatars.githubusercontent.com/u/1574205?v=4",
+      "profile": "https://github.com/gabrielscarvalho",
+      "contributions": [
+        "bug",
+        "code"
+      ]
+    },
+    {
+      "login": "ptmkenny",
+      "name": "ptmkenny",
+      "avatar_url": "https://avatars.githubusercontent.com/u/1451472?v=4",
+      "profile": "https://github.com/ptmkenny",
+      "contributions": [
+        "bug",
+        "code",
+        "doc"
+      ]
+    },
+    {
+      "login": "vkyeswa",
+      "name": "vkyeswa",
+      "avatar_url": "https://avatars.githubusercontent.com/u/5016129?v=4",
+      "profile": "https://github.com/vkyeswa",
+      "contributions": [
+        "bug"
+      ]
+    },
+    {
+      "login": "losciur",
+      "name": "losciur",
+      "avatar_url": "https://avatars.githubusercontent.com/u/62714342?v=4",
+      "profile": "https://github.com/losciur",
+      "contributions": [
+        "test",
+        "bug"
+      ]
+    }
+  ],
+  "contributorsPerLine": 7,
+  "projectName": "firebase-analytics",
+  "projectOwner": "capacitor-community",
+  "repoType": "github",
+  "repoHost": "https://github.com",
+  "skipCi": true
+}
