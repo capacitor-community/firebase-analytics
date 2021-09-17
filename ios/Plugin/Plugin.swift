@@ -51,7 +51,7 @@ public class FirebaseAnalytics: CAPPlugin {
     @objc func getAppInstanceId(_ call: CAPPluginCall) {
         let instanceId = Analytics.appInstanceID()
         call.resolve([
-            "instanceId": instanceId!
+            "instanceId": instanceId
         ])
     }
 
