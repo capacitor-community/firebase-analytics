@@ -224,9 +224,8 @@ public class FirebaseAnalytics extends Plugin {
       }
 
       String name = call.getString("name");
-      JSObject data = call.getData();
-      JSONObject params = data.getJSObject("params");
-      mFirebaseAnalytics.logEvent(name, params != null ? convertJsonToBundle(params) : null);
+      JSONObject params = call.getData().getJSObject("params");
+      mFirebaseAnalytics.logEvent(name, params != null ? FirebaseAnalytics.convertJsonToBundle(params) : null);
       call.resolve();
     } catch (Exception ex) {
       call.reject(ex.getLocalizedMessage());
@@ -301,8 +300,9 @@ public class FirebaseAnalytics extends Plugin {
     call.resolve();
   }
 
-  private Bundle convertJsonToBundle(JSONObject json) {
+  public static Bundle convertJsonToBundle(JSONObject json) {
     Bundle bundle = new Bundle();
+    if (json == null || json.length() == 0) return bundle;
 
     Iterator<String> iterator = json.keys();
     while (iterator.hasNext()) {
@@ -316,14 +316,14 @@ public class FirebaseAnalytics extends Plugin {
         else if (value instanceof Long) bundle.putLong(key, (Long) value);
         else if (value instanceof Float) bundle.putFloat(key, (Float) value);
         else if (value instanceof Double) bundle.putDouble(key, (Double) value);
-        else if (value instanceof JSONObject) bundle.putBundle(key, convertJsonToBundle((JSONObject) value));
+        else if (value instanceof JSONObject) bundle.putBundle(key, FirebaseAnalytics.convertJsonToBundle((JSONObject) value));
         else if (value instanceof JSONArray) {
-          JSONArray array = (JSONArray)value; 
+          JSONArray array = (JSONArray) value; 
           Object first = array.length() == 0 ? null : (Object) array.get(0);
           if (first == null);
           else if (first instanceof JSONObject) {
             Bundle[] items = new Bundle[array.length()];
-            for (int i = 0; i < array.length(); i++) items[i] = convertJsonToBundle(array.getJSONObject(i));
+            for (int i = 0; i < array.length(); i++) items[i] = FirebaseAnalytics.convertJsonToBundle(array.getJSONObject(i));
             bundle.putParcelableArray(key, items);
           } else if (first instanceof String) {
             String[] items = new String[array.length()];
@@ -331,11 +331,13 @@ public class FirebaseAnalytics extends Plugin {
             bundle.putStringArray(key, items);
           } else if (first instanceof Integer || first instanceof Float || first instanceof Double) {
             float[] items = new float[array.length()];
-            for (int i = 0; i < array.length(); i++) items[i] = (float) array.get(i);
+            for (int i = 0; i < array.length(); i++) {
+              items[i] = ((Number) array.get(i)).floatValue();
+            }
             bundle.putFloatArray(key, items);
           }
         }
-      } catch (JSONException e) {
+      } catch (ClassCastException | JSONException e) {
         e.printStackTrace();
       }
     }

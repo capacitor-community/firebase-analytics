@@ -9,8 +9,11 @@ buildscript {
     repositories {
         google()
         jcenter()
+        mavenCentral()
     }
     dependencies {
+        classpath 'com.github.bjoernq:unmockplugin:0.7.8'
+
         classpath 'com.android.tools.build:gradle:3.6.1'
 
         classpath 'com.google.gms:google-services:4.3.3'
@@ -18,6 +21,12 @@ buildscript {
 }
 
 apply plugin: 'com.android.library'
+
+apply plugin: 'de.mobilej.unmock'
+unMock {
+    keep "android.os.Bundle"
+    keepStartingWith "org.json."
+}
 
 android {
     compileSdkVersion project.hasProperty('compileSdkVersion') ? rootProject.ext.compileSdkVersion : 30
@@ -36,6 +45,10 @@ android {
     }
     lintOptions {
         abortOnError false
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
     }
 }
 
