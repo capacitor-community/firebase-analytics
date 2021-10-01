@@ -116,27 +116,24 @@ public class FirebaseAnalytics extends Plugin {
       return;
     }
     Task<String> task = mFirebaseAnalytics.getAppInstanceId();
-    task.addOnCompleteListener(
-      new OnCompleteListener<String>() {
-
+    task.addOnCompleteListener(new OnCompleteListener<String>() {
         @Override
         public void onComplete(@NonNull Task<String> task) {
-          if (task.isSuccessful()) {
-            String instanceId = task.getResult();
-            if (instanceId.isEmpty()) {
-              call.reject("failed to obtain app instance id");
+            if (task.isSuccessful()) {
+              String instanceId = task.getResult();
+              if (instanceId.isEmpty()) {
+                call.reject("failed to obtain app instance id");
+              } else {
+                JSObject result = new JSObject();
+                result.put("instanceId", instanceId);
+                call.resolve(result);
+              }
             } else {
-              JSObject result = new JSObject();
-              result.put("instanceId", instanceId);
-              call.resolve(result);
+                Exception exception = task.getException();
+                call.reject(exception.getLocalizedMessage());
             }
-          } else {
-            Exception exception = task.getException();
-            call.reject(exception.getLocalizedMessage());
-          }
         }
-      }
-    );
+    });
   }
 
   /**
@@ -229,10 +226,7 @@ public class FirebaseAnalytics extends Plugin {
       String name = call.getString("name");
       JSObject data = call.getData();
       JSONObject params = data.getJSObject("params");
-      mFirebaseAnalytics.logEvent(
-        name,
-        params != null ? convertJsonToBundle(params) : null
-      );
+      mFirebaseAnalytics.logEvent(name, params != null ? convertJsonToBundle(params) : null);
       call.resolve();
     } catch (Exception ex) {
       call.reject(ex.getLocalizedMessage());
@@ -315,48 +309,29 @@ public class FirebaseAnalytics extends Plugin {
       String key = (String) iterator.next();
       try {
         Object value = json.get(key);
-        if (value == null); else if (value instanceof String) bundle.putString(
-          key,
-          (String) value
-        ); else if (value instanceof Boolean) bundle.putBoolean(
-          key,
-          (Boolean) value
-        ); else if (value instanceof Integer) bundle.putInt(
-          key,
-          (Integer) value
-        ); else if (value instanceof Long) bundle.putLong(
-          key,
-          (Long) value
-        ); else if (value instanceof Float) bundle.putFloat(
-          key,
-          (Float) value
-        ); else if (value instanceof Double) bundle.putDouble(
-          key,
-          (Double) value
-        ); else if (value instanceof JSONObject) bundle.putBundle(
-          key,
-          convertJsonToBundle((JSONObject) value)
-        ); else if (value instanceof JSONArray) {
-          JSONArray array = (JSONArray) value;
+        if (value == null);
+        else if (value instanceof String) bundle.putString(key, (String) value);
+        else if (value instanceof Boolean) bundle.putBoolean(key, (Boolean) value);
+        else if (value instanceof Integer) bundle.putInt(key, (Integer) value);
+        else if (value instanceof Long) bundle.putLong(key, (Long) value);
+        else if (value instanceof Float) bundle.putFloat(key, (Float) value);
+        else if (value instanceof Double) bundle.putDouble(key, (Double) value);
+        else if (value instanceof JSONObject) bundle.putBundle(key, convertJsonToBundle((JSONObject) value));
+        else if (value instanceof JSONArray) {
+          JSONArray array = (JSONArray)value; 
           Object first = array.length() == 0 ? null : (Object) array.get(0);
-          if (first == null); else if (first instanceof JSONObject) {
+          if (first == null);
+          else if (first instanceof JSONObject) {
             Bundle[] items = new Bundle[array.length()];
-            for (int i = 0; i < array.length(); i++) items[i] =
-              convertJsonToBundle(array.getJSONObject(i));
+            for (int i = 0; i < array.length(); i++) items[i] = convertJsonToBundle(array.getJSONObject(i));
             bundle.putParcelableArray(key, items);
           } else if (first instanceof String) {
             String[] items = new String[array.length()];
-            for (int i = 0; i < array.length(); i++) items[i] =
-              array.getString(i);
+            for (int i = 0; i < array.length(); i++) items[i] = array.getString(i);
             bundle.putStringArray(key, items);
-          } else if (
-            first instanceof Integer ||
-            first instanceof Float ||
-            first instanceof Double
-          ) {
+          } else if (first instanceof Integer || first instanceof Float || first instanceof Double) {
             float[] items = new float[array.length()];
-            for (int i = 0; i < array.length(); i++) items[i] =
-              (float) array.get(i);
+            for (int i = 0; i < array.length(); i++) items[i] = (float) array.get(i);
             bundle.putFloatArray(key, items);
           }
         }
