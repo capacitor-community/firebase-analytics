@@ -12,6 +12,8 @@ import com.getcapacitor.annotation.Permission;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import java.util.Iterator;
+import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 @CapacitorPlugin(
@@ -114,24 +116,27 @@ public class FirebaseAnalytics extends Plugin {
       return;
     }
     Task<String> task = mFirebaseAnalytics.getAppInstanceId();
-    task.addOnCompleteListener(new OnCompleteListener<String>() {
+    task.addOnCompleteListener(
+      new OnCompleteListener<String>() {
+
         @Override
         public void onComplete(@NonNull Task<String> task) {
-            if (task.isSuccessful()) {
-              String instanceId = task.getResult();
-              if (instanceId.isEmpty()) {
-                call.reject("failed to obtain app instance id");
-              } else {
-                JSObject result = new JSObject();
-                result.put("instanceId", instanceId);
-                call.resolve(result);
-              }
+          if (task.isSuccessful()) {
+            String instanceId = task.getResult();
+            if (instanceId.isEmpty()) {
+              call.reject("failed to obtain app instance id");
             } else {
-                Exception exception = task.getException();
-                call.reject(exception.getLocalizedMessage());
+              JSObject result = new JSObject();
+              result.put("instanceId", instanceId);
+              call.resolve(result);
             }
+          } else {
+            Exception exception = task.getException();
+            call.reject(exception.getLocalizedMessage());
+          }
         }
-    });
+      }
+    );
   }
 
   /**
@@ -224,30 +229,10 @@ public class FirebaseAnalytics extends Plugin {
       String name = call.getString("name");
       JSObject data = call.getData();
       JSONObject params = data.getJSObject("params");
-      Bundle bundle = new Bundle();
-
-      if (params != null) {
-        Iterator<String> keys = params.keys();
-
-        while (keys.hasNext()) {
-          String key = keys.next();
-          Object value = params.get(key);
-
-          if (value instanceof String) {
-            bundle.putString(key, (String) value);
-          } else if (value instanceof Integer) {
-            bundle.putInt(key, (Integer) value);
-          } else if (value instanceof Double) {
-            bundle.putDouble(key, (Double) value);
-          } else if (value instanceof Long) {
-            bundle.putLong(key, (Long) value);
-          } else {
-            call.reject("value for " + key + " is missing");
-          }
-        }
-      }
-
-      mFirebaseAnalytics.logEvent(name, bundle);
+      mFirebaseAnalytics.logEvent(
+        name,
+        params != null ? convertJsonToBundle(params) : null
+      );
       call.resolve();
     } catch (Exception ex) {
       call.reject(ex.getLocalizedMessage());
@@ -320,5 +305,66 @@ public class FirebaseAnalytics extends Plugin {
 
     mFirebaseAnalytics.setSessionTimeoutDuration(duration);
     call.resolve();
+  }
+
+  private Bundle convertJsonToBundle(JSONObject json) {
+    Bundle bundle = new Bundle();
+
+    Iterator<String> iterator = json.keys();
+    while (iterator.hasNext()) {
+      String key = (String) iterator.next();
+      try {
+        Object value = json.get(key);
+        if (value == null); else if (value instanceof String) bundle.putString(
+          key,
+          (String) value
+        ); else if (value instanceof Boolean) bundle.putBoolean(
+          key,
+          (Boolean) value
+        ); else if (value instanceof Integer) bundle.putInt(
+          key,
+          (Integer) value
+        ); else if (value instanceof Long) bundle.putLong(
+          key,
+          (Long) value
+        ); else if (value instanceof Float) bundle.putFloat(
+          key,
+          (Float) value
+        ); else if (value instanceof Double) bundle.putDouble(
+          key,
+          (Double) value
+        ); else if (value instanceof JSONObject) bundle.putBundle(
+          key,
+          convertJsonToBundle((JSONObject) value)
+        ); else if (value instanceof JSONArray) {
+          JSONArray array = (JSONArray) value;
+          Object first = array.length() == 0 ? null : (Object) array.get(0);
+          if (first == null); else if (first instanceof JSONObject) {
+            Bundle[] items = new Bundle[array.length()];
+            for (int i = 0; i < array.length(); i++) items[i] =
+              convertJsonToBundle(array.getJSONObject(i));
+            bundle.putParcelableArray(key, items);
+          } else if (first instanceof String) {
+            String[] items = new String[array.length()];
+            for (int i = 0; i < array.length(); i++) items[i] =
+              array.getString(i);
+            bundle.putStringArray(key, items);
+          } else if (
+            first instanceof Integer ||
+            first instanceof Float ||
+            first instanceof Double
+          ) {
+            float[] items = new float[array.length()];
+            for (int i = 0; i < array.length(); i++) items[i] =
+              (float) array.get(i);
+            bundle.putFloatArray(key, items);
+          }
+        }
+      } catch (JSONException e) {
+        e.printStackTrace();
+      }
+    }
+
+    return bundle;
   }
 }
