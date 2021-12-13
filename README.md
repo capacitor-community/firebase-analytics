@@ -63,23 +63,12 @@ public class MainActivity extends BridgeActivity {
   @Override
   public void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
-
-    // Initializes the Bridge
-    this.init(
-        savedInstanceState,
-        new ArrayList<Class<? extends Plugin>>() {
-
-          {
-            // Additional plugins you've installed go here
-            // Ex: add(TotallyAwesomePlugin.class);
-            add(FirebaseAnalytics.class);
-          }
-        }
-      );
+    registerPlugin(FirebaseAnalytics.class);
   }
 }
-
 ```
+
+> **Note:** You may need to run **File > Sync Project with Gradle Files** in order for Android Studio to recognize the import.
 
 ## Configuration
 
