@@ -117,6 +117,24 @@
         "test",
         "bug"
       ]
+    },
+    {
+      "login": "wyattades",
+      "name": "Wyatt Ades",
+      "avatar_url": "https://avatars.githubusercontent.com/u/992076?v=4",
+      "profile": "https://github.com/wyattades",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "quqkuk",
+      "name": "quq",
+      "avatar_url": "https://avatars.githubusercontent.com/u/40238888?v=4",
+      "profile": "https://github.com/quqkuk",
+      "contributions": [
+        "code"
+      ]
     }
   ],
   "contributorsPerLine": 7,
