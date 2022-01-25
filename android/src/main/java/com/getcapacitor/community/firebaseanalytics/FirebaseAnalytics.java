@@ -121,7 +121,7 @@ public class FirebaseAnalytics extends Plugin {
         public void onComplete(@NonNull Task<String> task) {
             if (task.isSuccessful()) {
               String instanceId = task.getResult();
-              if (instanceId.isEmpty()) {
+              if (instanceId != null && instanceId.isEmpty()) {
                 call.reject("failed to obtain app instance id");
               } else {
                 JSObject result = new JSObject();
