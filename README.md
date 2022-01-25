@@ -28,47 +28,23 @@
 Using npm:
 
 ```bash
-# Capacitor v3
 npm install @capacitor-community/firebase-analytics@latest
-
-# Capacitor v2
-npm install @capacitor-community/firebase-analytics@capacitor2-lts
 ```
 
 Using yarn:
 
 ```bash
-# Capacitor v3
 yarn add @capacitor-community/firebase-analytics@latest
-
-# Capacitor v2
-yarn add @capacitor-community/firebase-analytics@capacitor2-lts
 ```
 
 Sync native files:
 
 ```bash
+# Update the native plugins and dependencies referenced in package.json
 npx cap sync
 ```
 
-On iOS, no further steps are needed.
-
-On Android, register the plugin in your main activity:
-
-```java
-import com.getcapacitor.community.firebaseanalytics.FirebaseAnalytics;
-
-public class MainActivity extends BridgeActivity {
-
-  @Override
-  public void onCreate(Bundle savedInstanceState) {
-    super.onCreate(savedInstanceState);
-    registerPlugin(FirebaseAnalytics.class);
-  }
-}
-```
-
-> **Note:** You may need to run **File > Sync Project with Gradle Files** in order for Android Studio to recognize the import.
+> **Note:** You may also need to run **File > Sync Project with Gradle Files** in order for Android Studio to recognize the import.
 
 ## Configuration
 
@@ -275,9 +251,6 @@ Download the `google-services.json` file and copy it to `android/app/` directory
 - `npx cap sync android` (every time you run `npm install`)
 - `npx cap open android`
 - add `google-services.json` to your `android/app` folder
-- `[extra step]` in android case we need to tell Capacitor to initialise the plugin:
-
-> on your `MainActivity.java` file add `import com.getcapacitor.community.firebaseanalytics.FirebaseAnalytics;` and then inside the init callback `add(FirebaseAnalytics.class);`
 
 Now you should be set to go. Try to run your client using `ionic cap run android --livereload --address=0.0.0.0`.
 
@@ -297,19 +270,18 @@ If you were previously using the `capacitor-analytics` package from npm
 
    ```bash
    npm uninstall --save capacitor-analytics
-   npm install --save-prod @capacitor-community/firebase-analytics
+   npm install --save-prod @capacitor-community/firebase-analytics@latest
    ```
 
 1. Update the plugin initialization in Android's _MainActivity.java_
 
-   Update the plugin import:
+   Remove the old plugin import:
 
    ```diff
    -import io.stewan.capacitor.analytics.AnalyticsPlugin;
-   +import com.getcapacitor.community.firebaseanalytics.FirebaseAnalytics;
    ```
 
-   Update the `init()` call to use the new plugin import:
+   Update the `init()` call to remove the old plugin import. You may be able to remove the entire `init()` call if there is nothing else in there.
 
    ```diff
    // Initializes the Bridge
@@ -317,7 +289,6 @@ If you were previously using the `capacitor-analytics` package from npm
      // Additional plugins you've installed go here
      // Ex: add(TotallyAwesomePlugin.class);
    - add(AnalyticsPlugin.class);
-   + add(FirebaseAnalytics.class);
    }});
    ```
 
