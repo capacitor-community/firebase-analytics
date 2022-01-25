@@ -12,6 +12,8 @@ import com.getcapacitor.annotation.Permission;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import java.util.Iterator;
+import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 @CapacitorPlugin(
@@ -222,32 +224,8 @@ public class FirebaseAnalytics extends Plugin {
       }
 
       String name = call.getString("name");
-      JSObject data = call.getData();
-      JSONObject params = data.getJSObject("params");
-      Bundle bundle = new Bundle();
-
-      if (params != null) {
-        Iterator<String> keys = params.keys();
-
-        while (keys.hasNext()) {
-          String key = keys.next();
-          Object value = params.get(key);
-
-          if (value instanceof String) {
-            bundle.putString(key, (String) value);
-          } else if (value instanceof Integer) {
-            bundle.putInt(key, (Integer) value);
-          } else if (value instanceof Double) {
-            bundle.putDouble(key, (Double) value);
-          } else if (value instanceof Long) {
-            bundle.putLong(key, (Long) value);
-          } else {
-            call.reject("value for " + key + " is missing");
-          }
-        }
-      }
-
-      mFirebaseAnalytics.logEvent(name, bundle);
+      JSONObject params = call.getData().getJSObject("params");
+      mFirebaseAnalytics.logEvent(name, params != null ? FirebaseAnalytics.convertJsonToBundle(params) : null);
       call.resolve();
     } catch (Exception ex) {
       call.reject(ex.getLocalizedMessage());
@@ -320,5 +298,50 @@ public class FirebaseAnalytics extends Plugin {
 
     mFirebaseAnalytics.setSessionTimeoutDuration(duration);
     call.resolve();
+  }
+
+  public static Bundle convertJsonToBundle(JSONObject json) {
+    Bundle bundle = new Bundle();
+    if (json == null || json.length() == 0) return bundle;
+
+    Iterator<String> iterator = json.keys();
+    while (iterator.hasNext()) {
+      String key = (String) iterator.next();
+      try {
+        Object value = json.get(key);
+        if (value == null);
+        else if (value instanceof String) bundle.putString(key, (String) value);
+        else if (value instanceof Boolean) bundle.putBoolean(key, (Boolean) value);
+        else if (value instanceof Integer) bundle.putInt(key, (Integer) value);
+        else if (value instanceof Long) bundle.putLong(key, (Long) value);
+        else if (value instanceof Float) bundle.putFloat(key, (Float) value);
+        else if (value instanceof Double) bundle.putDouble(key, (Double) value);
+        else if (value instanceof JSONObject) bundle.putBundle(key, FirebaseAnalytics.convertJsonToBundle((JSONObject) value));
+        else if (value instanceof JSONArray) {
+          JSONArray array = (JSONArray) value; 
+          Object first = array.length() == 0 ? null : (Object) array.get(0);
+          if (first == null);
+          else if (first instanceof JSONObject) {
+            Bundle[] items = new Bundle[array.length()];
+            for (int i = 0; i < array.length(); i++) items[i] = FirebaseAnalytics.convertJsonToBundle(array.getJSONObject(i));
+            bundle.putParcelableArray(key, items);
+          } else if (first instanceof String) {
+            String[] items = new String[array.length()];
+            for (int i = 0; i < array.length(); i++) items[i] = array.getString(i);
+            bundle.putStringArray(key, items);
+          } else if (first instanceof Integer || first instanceof Float || first instanceof Double) {
+            float[] items = new float[array.length()];
+            for (int i = 0; i < array.length(); i++) {
+              items[i] = ((Number) array.get(i)).floatValue();
+            }
+            bundle.putFloatArray(key, items);
+          }
+        }
+      } catch (ClassCastException | JSONException e) {
+        e.printStackTrace();
+      }
+    }
+
+    return bundle;
   }
 }
