@@ -11,7 +11,7 @@
     "build": "npm run clean && tsc && rollup -c rollup.config.js",
     "clean": "rimraf ./dist",
     "watch": "tsc --watch",
-    "prepublishOnly": "npm run build",
+    "prepublish": "npm run build",
     "release": "np",
     "test": "echo \"No test specified\""
   },
