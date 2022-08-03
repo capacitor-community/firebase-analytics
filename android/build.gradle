@@ -14,9 +14,9 @@ buildscript {
     dependencies {
         classpath 'com.github.bjoernq:unmockplugin:0.7.8'
 
-        classpath 'com.android.tools.build:gradle:3.6.1'
+        classpath 'com.android.tools.build:gradle:7.2.1'
 
-        classpath 'com.google.gms:google-services:4.3.3'
+        classpath 'com.google.gms:google-services:4.3.13'
     }
 }
 
