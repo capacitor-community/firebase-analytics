@@ -18,11 +18,11 @@
   "author": "mesur.io <oss@mesur.io>",
   "license": "MIT",
   "dependencies": {
-    "@capacitor/core": "^3.0.0"
+    "@capacitor/core": "latest"
   },
   "devDependencies": {
-    "@capacitor/android": "^3.0.0",
-    "@capacitor/ios": "^3.0.0",
+    "@capacitor/android": "latest",
+    "@capacitor/ios": "latest",
     "husky": "^4.2.5",
     "np": "^7.4.0",
     "prettier": "^2.2.1",
