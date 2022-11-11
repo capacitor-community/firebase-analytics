@@ -12,7 +12,7 @@ jobs:
     strategy:
       matrix:
         destination:
-          - "platform=iOS Simulator,OS=14.4,name=iPhone 8"
+          - "platform=iOS Simulator,OS=15.2,name=iPhone 8"
     steps:
       - name: Checkout Code
         uses: actions/checkout@v2
@@ -45,7 +45,7 @@ jobs:
         uses: actions/setup-java@v2
         with:
           distribution: "zulu"
-          java-version: "8"
+          java-version: "11"
       - name: Install NPM Dependencies
         run: npm ci
       - name: Build NPM Module
