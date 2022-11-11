@@ -12,7 +12,7 @@ jobs:
     strategy:
       matrix:
         destination:
-          - "platform=iOS Simulator,OS=14.4,name=iPhone 8"
+          - "generic/platform=iOS"
     steps:
       - name: Checkout Code
         uses: actions/checkout@v2
