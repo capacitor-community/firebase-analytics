@@ -223,6 +223,12 @@ Download the `GoogleService-Info.plist` file. In Xcode right-click on the yellow
 
 Download the `google-services.json` file and copy it to `android/app/` directory of your capacitor project.
 
+#### Variables
+
+This plugin will use the following project variables (defined in your app’s `variables.gradle` file):
+
+- `$firebaseAnalyticsVersion` version of `com.google.firebase:firebase-analytics` (default: `21.2.0`)
+
 ## iOS setup
 
 - `ionic start my-cap-app --capacitor`
