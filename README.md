@@ -56,13 +56,12 @@ No configuration is required for this plugin.
 
 ## Examples
 
-[Click here](https://github.com/priyankpat/capacitor-plugins-example/tree/firebase-analytics) for an example on how to implement this plugin.
+[Click here](https://github.com/jcesarmobile/capacitor-firebase-analytics-example) for an example on how to implement this plugin.
 
 You can also clone the repository:
 
 ```bash
-git clone https://github.com/priyankpat/capacitor-plugins-example
-git checkout -b firebase-analytics
+git clone https://github.com/jcesarmobile/capacitor-firebase-analytics-example
 ```
 
 ## Supported methods
