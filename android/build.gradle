@@ -29,7 +29,7 @@ unMock {
 }
 
 android {
-    namespace "com.getcapacitor.community.firebaseanalytics.firebaseanalytics"
+    namespace "com.getcapacitor.community.firebaseanalytics"
     compileSdkVersion project.hasProperty('compileSdkVersion') ? rootProject.ext.compileSdkVersion : 33
     defaultConfig {
         minSdkVersion project.hasProperty('minSdkVersion') ? rootProject.ext.minSdkVersion : 22
