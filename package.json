@@ -1,6 +1,6 @@
 {
   "name": "@capacitor-community/firebase-analytics",
-  "version": "5.0.0",
+  "version": "5.0.1",
   "description": "A native plugin for firebase analytics.",
   "homepage": "https://github.com/capacitor-community/firebase-analytics",
   "main": "dist/plugin.cjs.js",
