@@ -17,9 +17,9 @@
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 </p>
 
-## <a id="breaking-changes"> ❗❗ Breaking changes when updating to ✏️v4.0.0✏️❗❗
+## <a id="breaking-changes"> ❗❗ Breaking changes when updating to ✏️v5.0.0✏️❗❗
 
-✏️✏️ This plugin now supports Capacitor 4 only. For Capacitor 3 please use version 1.0.1 ! ✏️✏️
+✏️✏️ This plugin now supports Capacitor 5 only. For Capacitor 4 please use version 4.x. For Capacitor 3 please use version 1.0.1 ! ✏️✏️
 
 ## Maintainers
 
