@@ -2,7 +2,6 @@
 #import <Capacitor/Capacitor.h>
 
 CAP_PLUGIN(FirebaseAnalytics, "FirebaseAnalytics",
-           CAP_PLUGIN_METHOD(echo, CAPPluginReturnPromise);
            CAP_PLUGIN_METHOD(setUserId, CAPPluginReturnPromise);
            CAP_PLUGIN_METHOD(setUserProperty, CAPPluginReturnPromise);
            CAP_PLUGIN_METHOD(getAppInstanceId, CAPPluginReturnPromise);
