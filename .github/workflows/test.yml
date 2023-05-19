@@ -15,11 +15,11 @@ jobs:
           - "platform=iOS Simulator,OS=16.2,name=iPhone 8"
     steps:
       - name: Checkout Code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
       - name: Setup Node
-        uses: actions/setup-node@v2
+        uses: actions/setup-node@v3
         with:
-          node-version: "12"
+          node-version: "16"
       - name: Install NPM Dependencies
         run: npm ci
       - name: Build NPM Module
@@ -36,16 +36,16 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
       - name: Setup Node
-        uses: actions/setup-node@v2
+        uses: actions/setup-node@v3
         with:
-          node-version: "12"
+          node-version: "16"
       - name: Setup Java
-        uses: actions/setup-java@v2
+        uses: actions/setup-java@v3
         with:
           distribution: "zulu"
-          java-version: "11"
+          java-version: "17"
       - name: Install NPM Dependencies
         run: npm ci
       - name: Build NPM Module
