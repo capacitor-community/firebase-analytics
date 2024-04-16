@@ -1,6 +1,6 @@
 {
   "name": "@capacitor-community/firebase-analytics",
-  "version": "5.0.1",
+  "version": "6.0.0",
   "description": "A native plugin for firebase analytics.",
   "homepage": "https://github.com/capacitor-community/firebase-analytics",
   "main": "dist/plugin.cjs.js",
@@ -18,9 +18,9 @@
   "author": "mesur.io <oss@mesur.io>",
   "license": "MIT",
   "devDependencies": {
-    "@capacitor/android": "^5.0.0",
-    "@capacitor/core": "^5.0.0",
-    "@capacitor/ios": "^5.0.0",
+    "@capacitor/android": "^6.0.0",
+    "@capacitor/core": "^6.0.0",
+    "@capacitor/ios": "^6.0.0",
     "husky": "^4.2.5",
     "np": "^7.6.2",
     "prettier": "^2.7.1",
@@ -31,7 +31,7 @@
     "typescript": "^4.2.3"
   },
   "peerDependencies": {
-    "@capacitor/core": "^5.0.0"
+    "@capacitor/core": "^6.0.0"
   },
   "husky": {
     "hooks": {
