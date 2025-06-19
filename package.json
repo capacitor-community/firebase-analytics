@@ -15,7 +15,7 @@
     "release": "np",
     "test": "echo \"No test specified\""
   },
-  "author": "mesur.io <oss@mesur.io>",
+  "author": "Capacitor Community",
   "license": "MIT",
   "devDependencies": {
     "@capacitor/android": "^7.0.0",
