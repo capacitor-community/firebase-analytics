@@ -8,7 +8,7 @@ name: Plugin Unit Tests
 jobs:
   ios:
     name: iOS Unit Tests
-    runs-on: macos-latest
+    runs-on: macos-15
     strategy:
       matrix:
         destination:
