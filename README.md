@@ -6,7 +6,7 @@
 </p>
 
 <p align="center">
-  <img src="https://img.shields.io/maintenance/yes/2023?style=flat-square" />
+  <img src="https://img.shields.io/maintenance/yes/2025?style=flat-square" />
   <a href="https://github.com/capacitor-community/firebase-analytics/actions?query=workflow%3A%22Plugin+Unit+Tests%22"><img src="https://img.shields.io/github/actions/workflow/status/capacitor-community/firebase-analytics/test.yml?Test%20and%20Build%20Plugin?style=flat-square" /></a>
   <a href="https://www.npmjs.com/package/@capacitor-community/firebase-analytics"><img src="https://img.shields.io/npm/l/@capacitor-community/firebase-analytics?style=flat-square" /></a>
 <br>
@@ -29,12 +29,6 @@
 | 6.x               | 6.x            |
 | 5.x               | 5.0.1          |
 | 4.x               | 1.0.1          |
-
-## Maintainers
-
-| Maintainer | GitHub                                  | Social                                    |
-| ---------- | --------------------------------------- | ----------------------------------------- |
-| mesur.io   | [mesur-io](https://github.com/mesur-io) | [@mesur_io](https://twitter.com/mesur_io) |
 
 ## Installation
 
