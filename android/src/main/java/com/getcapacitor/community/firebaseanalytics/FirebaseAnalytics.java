@@ -58,13 +58,11 @@ public class FirebaseAnalytics extends Plugin {
         call.reject(MISSING_REF_MSSG);
         return;
       }
-
-      if (!call.hasOption("userId")) {
+      String userId = call.getString("userId");
+      if (userId == null) {
         call.reject("userId property is missing");
         return;
       }
-
-      String userId = call.getString("userId");
       mFirebaseAnalytics.setUserId(userId);
       call.resolve();
     } catch (Exception ex) {
@@ -84,19 +82,17 @@ public class FirebaseAnalytics extends Plugin {
         call.reject(MISSING_REF_MSSG);
         return;
       }
-
-      if (!call.hasOption("name")) {
+      String name = call.getString("name");
+      String value = call.getString("value");
+      if (name == null) {
         call.reject("name property is missing");
         return;
       }
 
-      if (!call.hasOption("value")) {
+      if (value == null) {
         call.reject("value property is missing");
         return;
       }
-
-      String name = call.getString("name");
-      String value = call.getString("value");
 
       mFirebaseAnalytics.setUserProperty(name, value);
       call.resolve();
@@ -149,13 +145,13 @@ public class FirebaseAnalytics extends Plugin {
         return;
       }
 
-      if (!call.hasOption("screenName")) {
+      final String screenName = call.getString("screenName");
+      final String nameOverride = call.getString("nameOverride");
+
+      if (screenName == null) {
         call.reject("screenName property is missing");
         return;
       }
-
-      final String screenName = call.getString("screenName");
-      final String nameOverride = call.getString("nameOverride", null);
 
       bridge
         .getActivity()
@@ -218,12 +214,12 @@ public class FirebaseAnalytics extends Plugin {
         return;
       }
 
-      if (!call.hasOption("name")) {
+      String name = call.getString("name");
+      if (name == null) {
         call.reject("name property is missing");
         return;
       }
 
-      String name = call.getString("name");
       JSONObject params = call.getData().getJSObject("params");
       mFirebaseAnalytics.logEvent(name, params != null ? FirebaseAnalytics.convertJsonToBundle(params) : null);
       call.resolve();
