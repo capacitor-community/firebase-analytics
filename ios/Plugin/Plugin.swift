@@ -53,11 +53,11 @@ public class FirebaseAnalytics: CAPPlugin {
     ///                   nameOverride - the name of the current screen. Set to null to clear the current screen name.
     @objc func setScreenName(_ call: CAPPluginCall) {
         if let screenName = call.getString("screenName") {
-            let nameOverride = call.getString("nameOverride") ?? nil
+            let nameOverride = call.getString("nameOverride") ?? ""
             DispatchQueue.main.async {
                 Analytics.logEvent(AnalyticsEventScreenView,
-                    parameters: [AnalyticsParameterScreenName: screenName,
-                                AnalyticsParameterScreenClass: nameOverride])
+                    parameters: [AnalyticsParameterScreenName: NSString(string: screenName),
+                                AnalyticsParameterScreenClass: NSstring(string: nameOverride)])
             }
             call.resolve()
         } else {
