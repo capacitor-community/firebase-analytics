@@ -229,7 +229,7 @@ Download the `google-services.json` file and copy it to `android/app/` directory
 
 This plugin will use the following project variables (defined in your app’s `variables.gradle` file):
 
-- `$firebaseAnalyticsVersion` version of `com.google.firebase:firebase-analytics` (default: `21.2.2`)
+- `$firebaseAnalyticsVersion` version of `com.google.firebase:firebase-analytics` (default: `23.0.0`)
 
 ## iOS setup
 
