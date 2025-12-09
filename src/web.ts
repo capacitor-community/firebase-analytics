@@ -293,15 +293,12 @@ export class FirebaseAnalyticsWeb
       }
 
       resolve(
-        Promise.all([
-          this.loadScript(firebaseAppScript.key, firebaseAppScript.src).then(
-            () =>
-              this.loadScript(
-                firebaseAnalyticsScript.key,
-                firebaseAnalyticsScript.src,
-              ),
+        this.loadScript(firebaseAppScript.key, firebaseAppScript.src).then(() =>
+          this.loadScript(
+            firebaseAnalyticsScript.key,
+            firebaseAnalyticsScript.src,
           ),
-        ]),
+        ),
       );
     });
   }
