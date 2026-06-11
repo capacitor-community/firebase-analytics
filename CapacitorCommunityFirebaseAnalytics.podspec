@@ -8,7 +8,7 @@ Pod::Spec.new do |s|
     s.homepage = package['homepage']
     s.author = package['author']
     s.source = { :git => 'https://github.com/capacitor-community/firebase-analytics', :tag => s.version.to_s }
-    s.source_files = 'ios/Plugin/**/*.{swift,h,m,c,cc,mm,cpp}'
+    s.source_files = 'ios/Sources/**/*.{swift,h,m,c,cc,mm,cpp}'
     s.ios.deployment_target = '15.0'
     s.static_framework = true
     s.dependency 'Capacitor'
