@@ -13,7 +13,8 @@
     "watch": "tsc --watch",
     "prepublishOnly": "npm run build",
     "release": "np",
-    "test": "echo \"No test specified\""
+    "test": "echo \"No test specified\"",
+    "ios:spm:install": "swift package resolve"
   },
   "author": "Capacitor Community",
   "license": "MIT",
@@ -43,7 +44,8 @@
     "android/build.gradle",
     "dist/",
     "ios/Plugin/",
-    "CapacitorCommunityFirebaseAnalytics.podspec"
+    "CapacitorCommunityFirebaseAnalytics.podspec",
+    "Package.swift"
   ],
   "keywords": [
     "capacitor",

@@ -9,6 +9,12 @@ test_project/
 *.map
 .DS_Store
 Podfile.lock
+Package.resolved
+/.build
+/Packages
+.swiftpm/configuration/registries.json
+.swiftpm/xcode/package.xcworkspace/contents.xcworkspacedata
+.netrc
 example/www/
 example/electron/www/*
 example/electron/capacitor.config.json

@@ -4,7 +4,21 @@ import FirebaseCore
 import FirebaseAnalytics
 
 @objc(FirebaseAnalytics)
-public class FirebaseAnalytics: CAPPlugin {
+public class FirebaseAnalytics: CAPPlugin, CAPBridgedPlugin {
+    public let identifier = "FirebaseAnalytics"
+    public let jsName = "FirebaseAnalytics"
+    public let pluginMethods: [CAPPluginMethod] = [
+        CAPPluginMethod(name: "setUserId", returnType: CAPPluginReturnPromise),
+        CAPPluginMethod(name: "setUserProperty", returnType: CAPPluginReturnPromise),
+        CAPPluginMethod(name: "getAppInstanceId", returnType: CAPPluginReturnPromise),
+        CAPPluginMethod(name: "setScreenName", returnType: CAPPluginReturnPromise),
+        CAPPluginMethod(name: "reset", returnType: CAPPluginReturnPromise),
+        CAPPluginMethod(name: "logEvent", returnType: CAPPluginReturnPromise),
+        CAPPluginMethod(name: "setCollectionEnabled", returnType: CAPPluginReturnPromise),
+        CAPPluginMethod(name: "setSessionTimeoutDuration", returnType: CAPPluginReturnPromise),
+        CAPPluginMethod(name: "enable", returnType: CAPPluginReturnPromise),
+        CAPPluginMethod(name: "disable", returnType: CAPPluginReturnPromise)
+    ]
 
     public override func load() {
         if FirebaseApp.app() == nil {

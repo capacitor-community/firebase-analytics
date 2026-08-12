@@ -19,7 +19,7 @@
 
 ## <a id="breaking-changes"> ❗❗ Breaking changes when updating to ✏️v8.0.0✏️❗❗
 
-✏️✏️ This plugin now supports Capacitor 7 only. For Capacitor 6, 5 and 4 please use version listed below ✏️✏️
+✏️✏️ This plugin now supports Capacitor 8 only. For Capacitor 7, 6, 5 and 4 please use version listed below ✏️✏️
 
 ## Plugin versions
 
@@ -51,6 +51,8 @@ Sync native files:
 # Update the native plugins and dependencies referenced in package.json
 npx cap sync
 ```
+
+> **Note:** On iOS, both CocoaPods and Swift Package Manager are supported. `npx cap sync` configures whichever one your app uses.
 
 > **Note:** You may also need to run **File > Sync Project with Gradle Files** in order for Android Studio to recognize the import.
 
@@ -238,7 +240,7 @@ This plugin will use the following project variables (defined in your app’s `v
 - `cd my-cap-app`
 - `npm install --save @capacitor-community/firebase-analytics`
 - `mkdir www && touch www/index.html`
-- `sudo gem install cocoapods` (only once)
+- `sudo gem install cocoapods` (only once, and only for CocoaPods-based apps)
 - `npx cap add ios`
 - `npx cap sync ios` (every time you run `npm install`)
 - `npx cap open ios`
