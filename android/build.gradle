@@ -22,10 +22,12 @@ buildscript {
 
 apply plugin: 'com.android.library'
 
-apply plugin: 'de.mobilej.unmock'
-unMock {
-    keep "android.os.Bundle"
-    keepStartingWith "org.json."
+if (project == rootProject) {
+    apply plugin: 'de.mobilej.unmock'
+    unMock {
+        keep "android.os.Bundle"
+        keepStartingWith "org.json."
+    }
 }
 
 android {
@@ -41,7 +43,7 @@ android {
     buildTypes {
         release {
             minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
     lint {
