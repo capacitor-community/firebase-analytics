@@ -12,7 +12,7 @@ buildscript {
         mavenCentral()
     }
     dependencies {
-        classpath 'com.github.bjoernq:unmockplugin:0.7.8'
+        classpath 'com.github.bjoernq:unmockplugin:0.11.0'
 
         classpath 'com.android.tools.build:gradle:8.13.0'
 
